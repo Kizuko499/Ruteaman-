@@ -119,11 +119,13 @@ routes/
 ## Tim
 
 - **Institusi:** MAN 2 Rembang
-- **Nama tim:** Tim RuteAman
-- **Anggota:** Tim siswa MAN 2 Rembang
+- **Nama tim:** The Braincells
+- **Anggota:**
+  1. Ahmad Fikri
+  2. Luna Michaila Maharani
 
 ---
 
 *Dikembangkan untuk UINIC 8.0 — Web Development Competition, UIN Sunan Kalijaga Yogyakarta.*
 
-© 2026 Tim RuteAman — MAN 2 Rembang
+© 2026 The Braincells — MAN 2 Rembang
