@@ -7,3 +7,8 @@
 *.zip
 backup-*/
 docs/mysql-setup.sql
+error_log
+pemulihan/
+panduan-bahasa-pengaturan/
+panduan-ringkasan-ui/
+ruteaman/
