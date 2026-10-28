@@ -1,0 +1,37 @@
+@props(['href','label','icon'=>'layout-grid','active'=>false])
+@php($tip='nav-tip-'.substr(sha1($href),0,12))
+@php($navIcons=[
+ 'layout-dashboard'=>'<rect width="7" height="9" x="3" y="3" rx="1" />  <rect width="7" height="5" x="14" y="3" rx="1" />  <rect width="7" height="9" x="14" y="12" rx="1" />  <rect width="7" height="5" x="3" y="16" rx="1" />',
+ 'school'=>'<path d="M14 21v-3a2 2 0 0 0-4 0v3" />  <path d="M18 4.933V21" />  <path d="m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6" />  <path d="m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11" />  <path d="M6 4.933V21" />  <circle cx="12" cy="9" r="2" />',
+ 'shield-check'=>'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />  <path d="m9 12 2 2 4-4" />',
+ 'sliders-horizontal'=>'<path d="M10 5H3" />  <path d="M12 19H3" />  <path d="M14 3v4" />  <path d="M16 17v4" />  <path d="M21 12h-9" />  <path d="M21 19h-5" />  <path d="M21 5h-7" />  <path d="M8 10v4" />  <path d="M8 12H3" />',
+ 'clipboard-list'=>'<rect width="8" height="4" x="8" y="2" rx="1" ry="1" />  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />  <path d="M12 11h4" />  <path d="M12 16h4" />  <path d="M8 11h.01" />  <path d="M8 16h.01" />',
+ 'scroll-text'=>'<path d="M15 12h-5" />  <path d="M15 8h-5" />  <path d="M19 17V5a2 2 0 0 0-2-2H4" />  <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />',
+ 'mail'=>'<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />  <rect x="2" y="4" width="20" height="16" rx="2" />',
+ 'contact-round'=>'<path d="M16 2v2" />  <path d="M17.915 21a6 6 0 10-12 0" />  <path d="M8 2v2" />  <circle cx="12" cy="11" r="4" />  <rect x="3" y="3" width="18" height="18" rx="2" />',
+ 'book-open'=>'<path d="M12 5v16" />  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />',
+ 'users'=>'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />  <path d="M16 3.128a4 4 0 0 1 0 7.744" />  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />  <circle cx="9" cy="7" r="4" />',
+ 'inbox'=>'<polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />  <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />',
+ 'file-up'=>'<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />  <path d="M14 2v5a1 1 0 0 0 1 1h5" />  <path d="M12 12v6" />  <path d="m15 15-3-3-3 3" />',
+ 'palette'=>'<path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />',
+ 'list-checks'=>'<path d="M13 5h8" />  <path d="M13 12h8" />  <path d="M13 19h8" />  <path d="m3 17 2 2 4-4" />  <path d="m3 7 2 2 4-4" />',
+ 'images'=>'<path d="m22 11-1.296-1.296a2.4 2.4 0 0 0-3.408 0L11 16" />  <path d="M4 8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2" />  <circle cx="13" cy="7" r="1" fill="currentColor" />  <rect x="8" y="2" width="14" height="14" rx="2" />',
+ 'badge-check'=>'<path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />  <path d="m16 9-5.5 5.5L8 12" />',
+ 'user-round-cog'=>'<path d="m14.305 19.53.923-.382" />  <path d="m15.228 16.852-.923-.383" />  <path d="m16.852 15.228-.383-.923" />  <path d="m16.852 20.772-.383.924" />  <path d="m19.148 15.228.383-.923" />  <path d="m19.53 21.696-.382-.924" />  <path d="M2 21a8 8 0 0 1 10.434-7.62" />  <path d="m20.772 16.852.924-.383" />  <path d="m20.772 19.148.924.383" />  <circle cx="10" cy="8" r="5" />  <circle cx="18" cy="18" r="3" />',
+ 'map-pinned'=>'<path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 01-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0112 0" />  <path d="M4.474 15h-.197a1 1 0 00-.969.753l-1.097 4.35a1.5 1.5 0 001.444 1.898L20.344 22a1.5 1.5 0 001.446-1.897l-1.098-4.35a1 1 0 00-.969-.753h-.197" />  <circle cx="12" cy="8" r="2" />',
+ 'log-out'=>'<path d="m16 17 5-5-5-5" />  <path d="M21 12H9" />  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />',
+ 'layout-grid'=>'<rect width="7" height="7" x="3" y="3" rx="1" />  <rect width="7" height="7" x="14" y="3" rx="1" />  <rect width="7" height="7" x="14" y="14" rx="1" />  <rect width="7" height="7" x="3" y="14" rx="1" />',
+ 'settings'=>'<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />  <circle cx="12" cy="12" r="3" />',
+ 'check'=>'<path d="M20 6 9 17l-5-5" />',
+ 'image'=>'<rect width="18" height="18" x="3" y="3" rx="2" ry="2" />  <circle cx="9" cy="9" r="2" />  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />',
+ 'map'=>'<path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />  <path d="M15 5.764v15" />  <path d="M9 3.236v15" />',
+ 'circle-user-round'=>'<path d="M17.925 20.056a6 6 0 0 0-11.851.001" />  <circle cx="12" cy="11" r="4" />  <circle cx="12" cy="12" r="10" />',
+ 'grid'=>'<rect width="7" height="7" x="3" y="3" rx="1" />  <rect width="7" height="7" x="14" y="3" rx="1" />  <rect width="7" height="7" x="14" y="14" rx="1" />  <rect width="7" height="7" x="3" y="14" rx="1" />',
+ 'audit'=>'<path d="M15 12h-5" />  <path d="M15 8h-5" />  <path d="M19 17V5a2 2 0 0 0-2-2H4" />  <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />',
+ 'profile'=>'<path d="M17.925 20.056a6 6 0 0 0-11.851.001" />  <circle cx="12" cy="11" r="4" />  <circle cx="12" cy="12" r="10" />',
+ 'guide'=>'<path d="M12 5v16" />  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />',
+ 'photo'=>'<rect width="18" height="18" x="3" y="3" rx="2" ry="2" />  <circle cx="9" cy="9" r="2" />  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />',
+ 'logout'=>'<path d="m16 17 5-5-5-5" />  <path d="M21 12H9" />  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />',
+])
+@php($navIconInner=$navIcons[$icon]??$navIcons['layout-grid'])
+<a class="admin-nav-item" href="{{ $href }}" aria-label="{{ __($label) }}" aria-describedby="{{ $tip }}" @if($active) aria-current="page" @endif><span class="admin-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{!! $navIconInner !!}</svg></span><span class="admin-nav-label">{{ __($label) }}</span><span class="admin-nav-tooltip" id="{{ $tip }}" role="tooltip">{{ __($label) }}</span>@if($active)<span class="admin-nav-active-marker" aria-hidden="true">•</span>@endif</a>

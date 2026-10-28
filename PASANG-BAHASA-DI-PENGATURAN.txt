@@ -1,0 +1,23 @@
+RUTEAMAN SEKOLAH/KAMPUS — BAHASA SETELAH LOGIN DI PENGATURAN
+
+Patch untuk source FULL sekolah/kampus pemulihan yang terakhir dibagikan. Hanya mengganti dua layout Blade; tidak mengubah .env, database, backend, JS/CSS, vendor, atau pilihan bahasa tersimpan.
+
+PERILAKU
+- Setelah login, bar Bahasa/Simpan bahasa di atas halaman publik/peta dihapus.
+- Bar bahasa di layout konsol admin juga tidak ditampilkan untuk akun yang sudah login.
+- Pilihan bahasa tetap berada di Akun > Pengaturan > Bahasa: /account/settings untuk pengguna; /admin/account/settings untuk admin. Form pengaturan yang sudah tersedia memakai penyimpanan preferensi akun yang sama.
+- Pengguna belum login tetap dapat memilih bahasa melalui menu akun tamu dan fallback tanpa JavaScript. Pilihan bahasa tamu pada halaman admin/invitation tetap mengikuti kondisi guest.
+
+PASANG
+1. Backup dua view yang akan ditimpa jika memiliki perubahan khusus.
+2. Upload ZIP dan EXTRACT DI HOME CPANEL tempat folder ruteaman berada. Pilih overwrite file yang sama. Jangan extract di dalam ruteaman atau public_html.
+3. Jalankan:
+   cd "$HOME/ruteaman"
+   php artisan view:clear
+   php artisan view:cache
+4. Hard refresh browser. Login, buka Akun > Pengaturan > Bahasa, pilih bahasa, lalu Simpan bahasa.
+
+Tidak perlu npm build, composer, migrasi atau seeding. Aset dan public_html tidak diubah.
+
+VALIDASI
+4 tes PHP lokal / 30 assertions lulus: pengguna login tanpa bar bahasa, satu form bahasa di Pengaturan, pilihan tersimpan tanpa mereset appearance, admin, dan bahasa tamu. Menggunakan fixture SQLite lokal, bukan database produksi. Kompilasi Blade dan format/izin/checksum ZIP diperiksa. Belum dipasang ke server Anda.

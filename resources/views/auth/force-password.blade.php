@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title',__('Ganti kata sandi awal'))
+@section('content')
+<form class="auth-card standalone" method="post" action="{{ route('password.force.update') }}">@csrf<h1>{{ __('Ganti kata sandi awal') }}</h1><p>{{ __('Buat kata sandi pribadi sebelum membuka konsol. Jangan gunakan sandi awal lagi.') }}</p>@if($errors->any())<div class="error" role="alert">{{ __($errors->first()) }}</div>@endif<label>{{ __('Kata sandi awal') }}<input type="password" name="current_password" required autocomplete="current-password"></label><label>{{ __('Kata sandi baru') }}<input type="password" name="password" required minlength="12" maxlength="128" autocomplete="new-password"></label><label>{{ __('Ulangi kata sandi baru') }}<input type="password" name="password_confirmation" required autocomplete="new-password"></label><p>{{ __('Minimal 12 karakter, huruf besar/kecil, angka, simbol; tidak memuat nama atau alias.') }}</p><button class="btn btn-dark">{{ __('Ganti kata sandi') }}</button></form><form class="auth-card" method="post" action="{{ route('logout') }}">@csrf<button class="btn btn-soft">{{ __('Keluar') }}</button></form>
+@endsection

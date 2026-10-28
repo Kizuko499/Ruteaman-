@@ -1,0 +1,2 @@
+
+.segmented-tabs{display:flex;padding:5px;border-radius:12px;background:#d2eeeb;border:1px solid var(--line);margin:16px 0 24px;max-width:420px}.segmented-tabs [role=tab]{flex:1;min-height:44px;padding:10px 16px;text-align:center;text-decoration:none;border-radius:8px;color:var(--teal-dark);font-weight:700;font-size:14px}.segmented-tabs [aria-selected=true]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px #12383a20}

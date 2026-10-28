@@ -1,0 +1,182 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "5ce51bdacd67adab5a2a1f8bf05577e2d3776f3171dc2afcebcc52bfdba4b4c1"
+  },
+  {
+    "path": "app/Http/Controllers/GuestReportController.php",
+    "sha256": "c3276b6baf18dd867585176c8dac835d97599b3c910e54ff605a747e9341eb95"
+  },
+  {
+    "path": "app/Http/Controllers/PublicMapController.php",
+    "sha256": "273691c91d9056d791248e60de878ff712f67bc6e8cde5eee8399039790ceb36"
+  },
+  {
+    "path": "app/Http/Controllers/VerificationController.php",
+    "sha256": "8ac4f648c5fa44ef36cb2d8ea7b8e603692e6df7fe8ecefbbc11c39ce537a932"
+  },
+  {
+    "path": "app/Http/Requests/StoreGuestHazardRequest.php",
+    "sha256": "df6224925739289f24e6ce91d15f1c2539dea37867f28e7955258cd9acb75243"
+  },
+  {
+    "path": "app/Models/Hazard.php",
+    "sha256": "318c8653a3eb65fbf47b109258b833a047a4ea1ba0f7ce1e56d16d46a8619583"
+  },
+  {
+    "path": "app/Models/HazardReport.php",
+    "sha256": "db8a0de084a84de6f3155ed83a7665d909045c1a2413344941a3c2a1f60be1e2"
+  },
+  {
+    "path": "app/Policies/HazardPublicPolicy.php",
+    "sha256": "a4ad2734a59c37c6e87c32790f0bc2dff5d09fa66ddd258129691633376396dd"
+  },
+  {
+    "path": "app/Providers/AppServiceProvider.php",
+    "sha256": "459e82b0b92ba84c9fb3507dcdc6438f402af07f3ec10ceed9d3bae184b89034"
+  },
+  {
+    "path": "app/Services/GuestReportService.php",
+    "sha256": "b5a0a525b3648ba185151a02bed1cf093457a95335119ea799c45b20c93faf6f"
+  },
+  {
+    "path": "app/Services/HazardEvidenceService.php",
+    "sha256": "4ed1b3667b8da95a07743c53c00954a17b4ad5e2de6f9f4f32e0f2b4688b4605"
+  },
+  {
+    "path": "app/Services/HazardLookupService.php",
+    "sha256": "71265039df008f06b352f72de0eee79c95a44ee2343ae1143c51273192dc8031"
+  },
+  {
+    "path": "app/Services/MapConditionService.php",
+    "sha256": "a43597927770f4485941c093645b1c3a47ba832264631bd55cf43825da0b42df"
+  },
+  {
+    "path": "app/Services/Routing/OpenRouteServiceProvider.php",
+    "sha256": "6bc7e21dc628c9ead3f7d4ad2316f33206f39e6361e938787ffb3a85b570303d"
+  },
+  {
+    "path": "database/migrations/2026_10_12_000000_add_guest_hazard_reporting.php",
+    "sha256": "6e2d05f8373e6648e0ba1561af0b72944c7229cab4f4146be2a6ea9b762afbf3"
+  },
+  {
+    "path": "docs/GUEST_REPORTS_QA.md",
+    "sha256": "1b1cbaa5eee4f56c5e6b9c5d3fe88dad547d5a6b95e8ddb944e69011c9121a69"
+  },
+  {
+    "path": "docs/GUEST_REPORTS_SETUP.md",
+    "sha256": "5b088c13a0675570f95534bade70008f09c92013c4ce36bfe72effcbd7fea773"
+  },
+  {
+    "path": "public/build/assets/app-1DTFk8zz.css",
+    "sha256": "13748a8189dc8c690fc902a1682d30ba289721688f32df4f2459a36de8e383de"
+  },
+  {
+    "path": "public/build/assets/app-CCfF2yLg.js",
+    "sha256": "75b73b71532a22f87ba2de25550db20d25feebe2480177d510fe374c7fbabb61"
+  },
+  {
+    "path": "public/build/assets/app-sP3Qm7lq.css",
+    "sha256": "f5062aa3040466338c0e992c57a685606b450a4308bb45b4ea2a7b05d5d32dd3"
+  },
+  {
+    "path": "public/build/assets/detail-BL7WowBJ.js",
+    "sha256": "2c56b8a089dac7d8d23ee1f351494a2b853f7e52af8a7306835875aba9a542b5"
+  },
+  {
+    "path": "public/build/assets/featured-rotator-YglMmyZk.js",
+    "sha256": "f21375207ee7ab657a5b4c6691d060c7d8830258c4d3c6ca5f738fca10942dc0"
+  },
+  {
+    "path": "public/build/assets/layers-2x-Bpkbi35X.png",
+    "sha256": "066daca850d8ffbef007af00b06eac0015728dee279c51f3cb6c716df7c42edf"
+  },
+  {
+    "path": "public/build/assets/layers-BWBAp2CZ.png",
+    "sha256": "1dbbe9d028e292f36fcba8f8b3a28d5e8932754fc2215b9ac69e4cdecf5107c6"
+  },
+  {
+    "path": "public/build/assets/list-B-ND9acf.js",
+    "sha256": "4e917bd975523440f83702ea17afedd731fe95512b02ec42cead30b9cc8f7456"
+  },
+  {
+    "path": "public/build/assets/marker-icon-hN30_KVU.png",
+    "sha256": "574c3a5cca85f4114085b6841596d62f00d7c892c7b03f28cbfa301deb1dc437"
+  },
+  {
+    "path": "public/build/assets/marker-shadow-f7SaPCxT.png",
+    "sha256": "264f5c640339f042dd729062cfc04c17f8ea0f29882b538e3848ed8f10edb4da"
+  },
+  {
+    "path": "public/build/assets/shared-DKXGtJvA.js",
+    "sha256": "bc8834d6fa1d35859a8cc21cc1895feb09e27e024eb319def8a30d67ba0d08a9"
+  },
+  {
+    "path": "public/build/manifest.json",
+    "sha256": "3f2cd4849bab1a40dc3253458659241e1c4aff3ad6b8f699c97d864dd96f0c9f"
+  },
+  {
+    "path": "resources/css/app.css",
+    "sha256": "81c094429c6d498e1f2716840b5003692ff6e3788014297f95139e5f8805b478"
+  },
+  {
+    "path": "resources/js/app.js",
+    "sha256": "f78edc3651273954b27f7e52f70c68cdd1bc85de580178fc8524c4531b0fbf61"
+  },
+  {
+    "path": "resources/js/features/guest-report.js",
+    "sha256": "dbff265efd3b56fd3c1544ec7e5c523541bec784102673bd6a6b54cf6a2899da"
+  },
+  {
+    "path": "resources/views/auth/login.blade.php",
+    "sha256": "81b9a91eca05682bd03281873589ce9735df0b1b21b8270bd1b1ceb905eb9e33"
+  },
+  {
+    "path": "resources/views/components/account-menu.blade.php",
+    "sha256": "f1bdf64e5a223ab559929e513bba69dd9c4f5b34a6e9a8b74a173b91b6970b15"
+  },
+  {
+    "path": "resources/views/hazards/guest-create.blade.php",
+    "sha256": "76dfe4ad82ac0391ba40ba9bfc4153b7aa854b826953b607d2aeee9bff0d4e67"
+  },
+  {
+    "path": "resources/views/hazards/guest-receipt.blade.php",
+    "sha256": "f2ac70d23c9b3a9c48633a4c209420b8a70062b93a0c4e29888095d4d1932abd"
+  },
+  {
+    "path": "resources/views/map.blade.php",
+    "sha256": "5e06c75245ee17b82a0378f69eba4641c221bdc6bfab5d26263701345b7376c5"
+  },
+  {
+    "path": "resources/views/pages/conditions/show.blade.php",
+    "sha256": "4eadb9f64f4686e40ee14f2678e3ea8b37a1ae4d2716872a7a44359c15500ab9"
+  },
+  {
+    "path": "resources/views/pages/home-featured.blade.php",
+    "sha256": "498592a880f87ee1012b16f98793299813e583b82590a0cdaef4025a996ba9f8"
+  },
+  {
+    "path": "resources/views/pages/privacy-policy.blade.php",
+    "sha256": "41edb656fce0a44f9947c73ae4e42c1aaa79d295dcd1f88d9cec70a0288bd812"
+  },
+  {
+    "path": "resources/views/partials/mobile-nav.blade.php",
+    "sha256": "7db00075e43fe30663f5641544ac1d836f148715ad2b3cdc3c0ab659d53a0cc0"
+  },
+  {
+    "path": "resources/views/partials/nav.blade.php",
+    "sha256": "9346fc14cf2fbe973eb2e78fbdd6355bfb89c1263cb2d9cefba635d88b8cbdd6"
+  },
+  {
+    "path": "resources/views/verifier/queue.blade.php",
+    "sha256": "dc431d1821a21a5f9f9c92689d64824390b292a1a01064b2fe27c81c73f91420"
+  },
+  {
+    "path": "routes/web.php",
+    "sha256": "c4fdc13eea1e9b98030f9a2046a3bb3e14f76e0844729cbc937044b30a50a6a5"
+  },
+  {
+    "path": "tests/Feature/GuestReportTest.php",
+    "sha256": "7acf1668a3cb1937f3229c39a128a473e56cf4cde1e78465f7dfd96e4c8b9e87"
+  }
+]

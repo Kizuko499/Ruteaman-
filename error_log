@@ -1,0 +1,51 @@
+[09-Oct-2026 00:39:08 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[09-Oct-2026 00:39:17 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[09-Oct-2026 00:39:31 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[09-Oct-2026 00:43:48 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[09-Oct-2026 00:43:48 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[09-Oct-2026 00:44:10 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[09-Oct-2026 00:44:10 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.34. in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/woixvwwz/ruteaman/vendor/composer/autoload_real.php(25): require()
+#1 /home/woixvwwz/ruteaman/vendor/autoload.php(22): ComposerAutoloaderInite091b5a157d23eae70c110f29ef91c51::getLoader()
+#2 /home/woixvwwz/ruteaman/artisan(10): require('/home/woixvwwz/...')
+#3 {main}
+  thrown in /home/woixvwwz/ruteaman/vendor/composer/platform_check.php on line 22
+[16-Oct-2026 03:41:00 UTC] PHP Parse error:  syntax error, unexpected double-quoted string "\n", expecting ")" in Command line code on line 4
+[16-Oct-2026 03:41:00 UTC] PHP Parse error:  syntax error, unexpected double-quoted string "\n", expecting ")" in Command line code on line 4

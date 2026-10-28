@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title',__('Laporanku'))
+@section('content')
+<div class="content-page">@include('partials.nav')<div class="page-title"><div><p class="eyebrow">{{ __('Aktivitasmu') }}</p><h1>{{ __('Laporanku') }}</h1><p>{{ __('Pantau status laporan tanpa menampilkan identitas asli ke publik.') }}</p></div><a class="btn btn-dark" href="{{ route('hazards.create') }}">{{ __('＋ Buat laporan') }}</a></div><div class="list">@forelse($reports as $report)<a class="list-item" href="{{ route('hazards.public',$report->hazard) }}"><span class="list-icon">!</span><div><h2>{{ $report->hazard->type->label }}</h2><p>{{ $report->created_at->diffForHumans() }}</p></div><span class="load light">{{ ucfirst($report->hazard->status->value) }}</span></a>@empty<div class="empty"><b>?</b><h2>{{ __('Belum ada laporanmu') }}</h2><p>{{ __('Buat laporan ketika melihat hazard di rute sekolah.') }}</p></div>@endforelse</div>{{ $reports->links() }}</div>
+@endsection

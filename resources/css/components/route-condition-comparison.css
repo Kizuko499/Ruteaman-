@@ -1,0 +1,24 @@
+.route-condition-comparison{container-type:inline-size;border:1px solid var(--line,#b4bea8);border-radius:16px;background:var(--surface,#fcf9ea);padding:16px;margin:0 0 16px;color:var(--ink,#263224);min-width:0;max-width:100%}
+.route-condition-comparison h2{font-size:21px;line-height:1.25;margin:0 0 12px}
+.route-condition-comparison .route-comparison-note{font-size:14px;line-height:1.55;margin:12px 0;color:var(--ink,#263224)}
+.route-comparison-scroll{max-width:100%;overflow-x:auto;border-radius:10px}.route-comparison-scroll:focus-visible{outline:3px solid var(--route-primary,#1F6E70);outline-offset:2px}
+.route-condition-comparison table{border-collapse:collapse;width:100%;font-size:14px;text-align:start;line-height:1.5}
+.route-condition-comparison caption{text-align:start;font-size:14px;font-weight:600;margin:0 0 8px}
+.route-condition-comparison th,.route-condition-comparison td{padding:10px 12px;border-bottom:1px solid var(--line,#b4bea8);vertical-align:top;text-align:start;overflow-wrap:anywhere}
+.route-condition-comparison thead th{font-weight:700;background:var(--canvas,#fcf9ea)}
+.route-condition-comparison tbody th{font-weight:700}.route-condition-comparison th small{display:block;font-size:14px;font-weight:500;margin-top:4px}
+@container(max-width:560px){
+ .route-condition-comparison thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .route-condition-comparison table,.route-condition-comparison tbody{display:block}
+ .route-condition-comparison caption{display:block;width:100%}
+ .route-condition-comparison tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0 0 12px;border:1px solid var(--line,#b4bea8);border-radius:12px;overflow:hidden}
+ .route-condition-comparison tbody th{grid-column:1/-1;background:var(--canvas,#fcf9ea)}
+ .route-condition-comparison td{min-width:0;padding:10px 12px}
+ .route-condition-comparison td::before{content:attr(data-label);display:block;font-weight:700;margin-bottom:3px}
+ .route-condition-comparison td:nth-child(6){grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){.route-condition-comparison{scroll-behavior:auto}}
+
+/* Replace the old horizontal school-card rail when the comparison is present. */
+.graph-panel .route-results:has(.route-condition-comparison){display:grid;grid-template-columns:minmax(0,1fr);overflow-x:visible;scroll-snap-type:none}
+.graph-panel .route-results:has(.route-condition-comparison) .graph-route-card{min-width:0}

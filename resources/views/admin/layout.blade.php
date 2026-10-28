@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ app()->getLocale() }}" dir="{{ \App\Services\LanguagePreferences::direction() }}"><head><script>try{document.documentElement.dataset.sidebar=localStorage.getItem("admin.sidebar")||(innerWidth<=1100?"collapsed":"expanded")}catch{document.documentElement.dataset.sidebar="expanded"}</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="csrf-token" content="{{ csrf_token() }}"><meta name="admin-reauth-at" content="{{ session('admin.reauth_at',0) }}"><meta name="robots" content="noindex,nofollow"><title>@yield('title',__('Konsol Admin')) {{ __('— RuteAman') }}</title>@include('partials.language-head')
+@if(request()->routeIs('school.dashboard'))
+@vite(['resources/css/app.css','resources/css/school-dashboard.css','resources/js/school-dashboard.js'])
+@else
+@vite(['resources/css/app.css','resources/js/app.js'])
+@endif
+@stack('styles')
+</head>
+<body class="admin-layout {{ request()->routeIs('school.dashboard')?'ra-school-dashboard':'' }}"><a class="skip" href="#main">{{ __('Lewati ke konten') }}</a>
+@php($viewer=auth()->user())
+@php($permissions=app(\App\Services\PermissionService::class))
+<header class="admin-mobile-bar"><a href="{{ route($viewer?->role->admin()?'admin.index':($viewer?'school.dashboard':'login')) }}">RuteAman <span>{{ __('Konsol') }}</span></a><button type="button" data-admin-menu aria-expanded="false" aria-controls="admin-sidebar">{{ __('☰ Menu') }}</button></header>
+<button class="admin-sidebar-backdrop" data-sidebar-backdrop hidden tabindex="-1" aria-label="{{ __('Tutup menu') }}"></button><aside id="admin-sidebar" class="admin-sidebar" aria-label="{{ __('Menu konsol') }}"><div class="admin-sidebar-controls"><button type="button" data-sidebar-toggle aria-expanded="true" aria-controls="admin-sidebar" aria-label="{{ __('Ciutkan sidebar') }}">«</button><button type="button" data-sidebar-close aria-label="{{ __('Tutup menu') }}">×</button></div><a class="admin-brand" href="{{ route($viewer?->role->admin()?'admin.index':($viewer?'school.dashboard':'login')) }}"><img src="{{ asset('favicon.svg') }}" width="32" height="32" alt="">RuteAman<span>{{ __('KONSOL ADMIN') }}</span></a>
+@if($viewer)<div class="admin-viewer"><x-admin-role-badge :role="$viewer->role" /><strong data-own-name>{{ $viewer->display_name }}</strong><small>{{ $viewer->school?->name ?? __('Cakupan platform') }}</small></div>
+<nav aria-label="{{ __('Navigasi konsol') }}">
+@if(($viewer->school_id&&$permissions->can($viewer,'dashboard.view',$viewer->school))||$permissions->can($viewer,'dashboard.view'))<x-admin-nav-item :href="route('school.dashboard')" :label="__('Dashboard Institusi')" icon="layout-grid" :active="request()->routeIs('school.dashboard')" />@endif
+@foreach([['admin.index',__('Ringkasan'),'layout-dashboard',null],['admin.schools',__('Institusi'),'school','schools.view'],['admin.roles',__('Tingkatan dan Izin'),'shield-check',null],['admin.features',__('Fitur Umum & Sekolah'),'sliders-horizontal','schools.features'],['admin.hazards',__('Laporan / Kondisi'),'clipboard-list','hazards.view'],['admin.audit',__('Log Audit'),'scroll-text','audit.view'],['admin.email.index',__('Email & Notifikasi'),'mail','email.monitor'],['admin.school-contacts',__('Kontak Institusi'),'contact-round','schools.view'],['admin.guide',__('Panduan Administrator'),'book-open',null]] as [$destination,$label,$icon,$key])
+@if($viewer->role->admin()&&(!$key||$permissions->can($viewer,$key,$viewer->school)))<x-admin-nav-item :href="route($destination)" :label="$label" :icon="$icon" :active="request()->routeIs($destination,$destination.'.*')" />@endif
+@endforeach
+@php($newSuggestions = \App\Models\InstitutionSuggestion::where('status','new')->count())
+@if($viewer->role===\App\Enums\Role::Owner)
+<x-admin-nav-item :href="route('admin.users.index')" :label="__('Semua Pengguna')" icon="users" :active="request()->routeIs('admin.users.*')" />
+<x-admin-nav-item :href="route('admin.suggestions.index')" :label="__('Usulan Institusi').($newSuggestions?' ('.$newSuggestions.')':'')" icon="inbox" :active="request()->routeIs('admin.suggestions.*')" />
+<x-admin-nav-item :href="route('admin.import.show')" :label="__('Impor CSV')" icon="file-up" :active="request()->routeIs('admin.import.*')" />
+@foreach([['admin.presentation',__('Tampilan & Kontak'),'palette'],['admin.condition-types',__('Jenis Kondisi'),'list-checks'],['admin.home-gallery',__('Foto Beranda'),'images']] as [$destination,$label,$icon])<x-admin-nav-item :href="route($destination)" :label="$label" :icon="$icon" :active="request()->routeIs($destination.'*')" />@endforeach
+@elseif(in_array($viewer->role->value,['platform_admin','school_staff'],true)&&$permissions->can($viewer,'users.view'))<x-admin-nav-item :href="route('admin.admins')" label="Akun tingkat lama" icon="users" :active="request()->routeIs('admin.admins*')" />
+<x-admin-nav-item :href="route('admin.suggestions.index')" :label="__('Usulan Institusi').($newSuggestions?' ('.$newSuggestions.')':'')" icon="inbox" :active="request()->routeIs('admin.suggestions.*')" />
+<x-admin-nav-item :href="route('admin.import.show')" :label="__('Impor CSV')" icon="file-up" :active="request()->routeIs('admin.import.*')" />@endif
+
+@if($permissions->can($viewer,'verification.decide',$viewer->school))<x-admin-nav-item :href="route('verifier.queue',['school'=>$viewer->school_id])" :label="__('Antrean Verifikasi')" icon="badge-check" :active="request()->routeIs('verifier.*')" />@endif
+@if($viewer->school_id&&$permissions->can($viewer,'users.view',$viewer->school))<x-admin-nav-item :href="route('school.users')" label="Pengguna Sekolah" icon="users" :active="request()->routeIs('school.users*')" />@endif
+</nav><div class="admin-sidebar-bottom"><x-admin-nav-item :href="route('admin.account.profile')" label="Akun saya" icon="user-round-cog" :active="request()->routeIs('admin.account.*','account.*')" /><x-admin-nav-item :href="route('map')" :label="__('Kembali ke peta')" icon="map-pinned" /><form method="post" action="{{ route('logout') }}">@csrf<button class="admin-nav-item" aria-label="{{ __('Keluar') }}"><span class="admin-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 17 5-5-5-5" />  <path d="M21 12H9" />  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /></svg></span><span class="admin-nav-label">{{ __('Keluar') }}</span><span class="admin-nav-tooltip" role="tooltip">{{ __('Keluar') }}</span></button></form></div>
+@else<div class="admin-viewer"><strong>{{ __('Akses undangan') }}</strong><small>{{ __('Identitas login diterbitkan platform.') }}</small></div><a href="{{ route('login') }}">{{ __('Kembali ke masuk') }}</a>@endif
+<p class="admin-sidebar-note">{{ __('Informasi komunitas,') }}<br>{{ __('bukan jaminan kondisi jalan.') }}</p></aside>
+<main id="main" class="admin-main"><div class="admin-topline" style="flex-wrap:wrap"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-width:0">@if($viewer?->role->admin()) @include('admin.back-button') @endif<span style="overflow-wrap:anywhere">{{ __('OPERASI SEKOLAH /') }} @yield('title','ADMIN')</span></div><div class="admin-actions"><button type="button" class="admin-secondary" data-open-reauth>{{ __('Konfirmasi ulang') }}</button><a href="{{ route('admin.guide') }}">{{ __('Panduan admin') }}</a></div></div>
+@if(session('success'))<div class="admin-notice" role="status">{{ __(session('success')) }}</div>@endif
+@if($errors->any())<div class="admin-error" role="alert"><strong>{{ __('Periksa kembali isian.') }}</strong><ul>@foreach($errors->all() as $error)<li>{{ __($error) }}</li>@endforeach</ul></div>@endif
+
+@yield('content')
+</main>
+@if($viewer)<dialog id="admin-reauth-dialog" aria-labelledby="reauth-title"><form id="admin-reauth-form" method="post" action="{{ route('admin.reauth') }}">@csrf<div class="admin-dialog-head"><h2 id="reauth-title">{{ __('Konfirmasi tindakan') }}</h2><button type="button" data-reauth-close aria-label="{{ __('Tutup konfirmasi') }}">×</button></div><p>{{ __('Masukkan kata sandi Anda. Konfirmasi berlaku selama 10 menit.') }}</p><label>{{ __('Kata sandi') }}<input type="password" name="password" required autocomplete="current-password" maxlength="128"></label><p data-reauth-error role="alert"></p><div class="admin-actions"><button type="button" class="admin-secondary" data-reauth-close>{{ __('Batal') }}</button><button class="admin-primary">{{ __('Konfirmasi') }}</button></div></form></dialog>@endif
+@stack('scripts')</body></html>

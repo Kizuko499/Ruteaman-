@@ -1,0 +1,114 @@
+{
+  "_shared-a1ENdmAi.js": {
+    "file": "assets/shared-a1ENdmAi.js",
+    "name": "shared",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_sidebar-DBiKQQuu.css": {
+    "file": "assets/sidebar-DBiKQQuu.css",
+    "src": "_sidebar-DBiKQQuu.css"
+  },
+  "_sidebar-DeiTu8AK.js": {
+    "file": "assets/sidebar-DeiTu8AK.js",
+    "name": "sidebar",
+    "css": [
+      "assets/sidebar-DBiKQQuu.css"
+    ]
+  },
+  "node_modules/leaflet/dist/images/layers-2x.png": {
+    "file": "assets/layers-2x-Bpkbi35X.png",
+    "src": "node_modules/leaflet/dist/images/layers-2x.png"
+  },
+  "node_modules/leaflet/dist/images/layers.png": {
+    "file": "assets/layers-BWBAp2CZ.png",
+    "src": "node_modules/leaflet/dist/images/layers.png"
+  },
+  "node_modules/leaflet/dist/images/marker-icon.png": {
+    "file": "assets/marker-icon-hN30_KVU.png",
+    "src": "node_modules/leaflet/dist/images/marker-icon.png"
+  },
+  "node_modules/leaflet/dist/images/marker-shadow.png": {
+    "file": "assets/marker-shadow-f7SaPCxT.png",
+    "src": "node_modules/leaflet/dist/images/marker-shadow.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BZyeT0Fv.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/school-dashboard.css": {
+    "file": "assets/school-dashboard-DyiD5W3y.css",
+    "name": "school-dashboard",
+    "names": [
+      "school-dashboard.css"
+    ],
+    "src": "resources/css/school-dashboard.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-6nYis0Ym.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_sidebar-DeiTu8AK.js"
+    ],
+    "dynamicImports": [
+      "resources/js/features/home/featured-rotator.js",
+      "resources/js/features/conditions/list.js",
+      "resources/js/features/conditions/detail.js"
+    ],
+    "css": [
+      "assets/app-fFLtfh8S.css"
+    ],
+    "assets": [
+      "assets/marker-icon-hN30_KVU.png",
+      "assets/marker-shadow-f7SaPCxT.png",
+      "assets/layers-BWBAp2CZ.png",
+      "assets/layers-2x-Bpkbi35X.png"
+    ]
+  },
+  "resources/js/features/conditions/detail.js": {
+    "file": "assets/detail-DzOgQ25v.js",
+    "name": "detail",
+    "src": "resources/js/features/conditions/detail.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_shared-a1ENdmAi.js"
+    ]
+  },
+  "resources/js/features/conditions/list.js": {
+    "file": "assets/list-DDZ_jKAG.js",
+    "name": "list",
+    "src": "resources/js/features/conditions/list.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_shared-a1ENdmAi.js"
+    ]
+  },
+  "resources/js/features/home/featured-rotator.js": {
+    "file": "assets/featured-rotator-Y7L6ji3b.js",
+    "name": "featured-rotator",
+    "src": "resources/js/features/home/featured-rotator.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_shared-a1ENdmAi.js"
+    ]
+  },
+  "resources/js/school-dashboard.js": {
+    "file": "assets/school-dashboard-BGRzMPeq.js",
+    "name": "school-dashboard",
+    "src": "resources/js/school-dashboard.js",
+    "isEntry": true,
+    "imports": [
+      "_sidebar-DeiTu8AK.js"
+    ]
+  }
+}

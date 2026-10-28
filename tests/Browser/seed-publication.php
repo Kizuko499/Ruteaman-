@@ -1,0 +1,17 @@
+<?php
+$root=dirname(__DIR__,2);require $root.'/vendor/autoload.php';$app=require $root.'/bootstrap/app.php';$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+if(!$app->environment('local','testing'))throw new RuntimeException('Browser fixtures only allowed in a dedicated local/testing database.');$app->make(Database\Seeders\DemoSeeder::class)->run();
+use App\Models\{Hazard,HazardType,School,User};use Illuminate\Support\Facades\{DB,Storage};
+$school=School::where('name','Sekolah A — Demo Simulasi')->first();$reporter=User::where('email','audit_demo@ruteaman.test')->first();
+$defs=[['flood','Genangan / banjir',3,180,true],['fallen_tree','Pohon tumbang',3,10080,false],['poor_lighting','Jalan gelap',2,10080,false]];
+foreach($defs as [$code,$label,$weight,$ttl,$rain])HazardType::updateOrCreate(['code'=>$code],['label'=>$label,'severity_weight'=>$weight,'ttl_minutes'=>$ttl,'rain_sensitive'=>$rain,'night_only'=>false]);
+$types=HazardType::whereIn('code',['flood','pothole','fallen_tree','poor_lighting'])->get();
+foreach(range(1,16) as $i){$slug='qa-kondisi-demo-'.$i;$old=Hazard::where('public_slug',$slug)->first();if($old)$old->delete();$type=$types[($i-1)%count($types)];$lng=106.825+$i*.00008;$lat=-6.178+$i*.00005;$status=$i===15?'resolved':($i===16?'expired':'confirmed');$id=DB::table('hazards')->insertGetId(['type_id'=>$type->id,'location'=>\App\Services\SpatialSql::point($lng,$lat),'severity'=>$type->severity_weight,'status'=>$status,'is_demo'=>true,'confidence'=>.5,'first_reported_at'=>now()->subMinutes($i*8),'last_confirmed_at'=>now()->subMinutes($i*4),'resolved_at'=>$status==='resolved'?now()->subMinutes(10):null,'location_label'=>['Jl. Mawar, depan pasar','Jl. Melati, sisi barat','Simpang sekolah','Jl. Kenanga'][$i%4].' (simulasi)','public_slug'=>$slug,'created_at'=>now(),'updated_at'=>now()]);$h=Hazard::find($id);
+if($i%4<2){$photo=$type->code==='flood'?'banjir-jalan.webp':'jalan-berlubang.webp';$path='hazards/qa-demo-'.$i.'.webp';Storage::disk('hazard_photos')->put($path,file_get_contents(public_path('images/'.$photo)));$h->reports()->create(['reporter_id'=>$reporter->id,'photo_path'=>$path,'observed_at'=>now()]);}
+if($i===16){$h->verifications()->create(['verifier_id'=>User::where('email','admin_a@ruteaman.test')->value('id'),'decision'=>'verified','created_at'=>now()->subHour()]);}
+}
+App\Services\ConditionFeedService::invalidate();echo "QA fixtures created: 16, all demo-labelled\n";
+
+$reporter=User::where('email','audit_demo@ruteaman.test')->first();$u1=User::where('email','siswa_2@ruteaman.test')->first();$u2=User::where('email','siswa_3@ruteaman.test')->first();
+foreach(Hazard::where('public_slug','like','qa-kondisi-demo-%')->get() as $h){if(!$h->reports()->exists())$h->reports()->create(['reporter_id'=>$reporter->id,'observed_at'=>$h->first_reported_at]);foreach([$u1,$u2] as $u)$h->confirmations()->updateOrCreate(['user_id'=>$u->id],['vote'=>'still_there','created_at'=>$h->last_confirmed_at]);if($h->type->code==='poor_lighting')foreach($h->reports()->whereNotNull('photo_path')->get() as $r)Storage::disk('hazard_photos')->put($r->photo_path,file_get_contents(public_path('images/minim-penerangan.webp')));}
+$h=Hazard::where('public_slug','qa-kondisi-demo-2')->first();$path='hazards/qa-demo-2.webp';Storage::disk('hazard_photos')->put($path,file_get_contents(public_path('images/jalan-berlubang.webp')));$h->reports()->first()->update(['photo_path'=>$path]);$h->update(['last_confirmed_at'=>now()->subMinute()]);App\Services\ConditionFeedService::invalidate();

@@ -1,0 +1,69 @@
+{
+  "success": true,
+  "message": "Get Data Success",
+  "developer": "sayaturu (https://github.com/ikhsan-rfl/)",
+  "data": [
+    {
+      "npsn": "20363192",
+      "nama": "MAN 2 REMBANG",
+      "bentukPendidikan": "MA",
+      "jalurPendidikan": "FORMAL",
+      "jenjangPendidikan": "PENDIDIKAN MENENGAH",
+      "kementerianPembina": "KEMENTERIAN AGAMA",
+      "statusSatuanPendidikan": "NEGERI",
+      "akreditasi": "A",
+      "jenisPendidikan": "PENDIDIKAN UMUM",
+      "dokumen_perizinan": {
+        "sk_pendirian_sekolah": {
+          "nomor": "KMA 810 TAHUN 2017",
+          "tanggal": "2017-10-03T00:00:00Z"
+        },
+        "sk_izin_operasional": {
+          "nomor": "KMA 810 TAHUN 2017",
+          "tanggal": "2017-10-03T00:00:00Z"
+        }
+      },
+      "yayasan": {
+        "nama": "",
+        "npyp": ""
+      },
+      "alamat": {
+        "jalan": "JL. SUNAN BONANG KM 01 LASEM",
+        "rt": 0,
+        "rw": 0,
+        "nama_dusun": "",
+        "nama_desa": "NGEMPLAK",
+        "nama_kecamatan": "LASEM",
+        "nama_kabupaten": "KAB. REMBANG",
+        "nama_provinsi": "JAWA TENGAH",
+        "nama_negara": "INDONESIA",
+        "kode_provinsi": "33",
+        "kode_kabupaten": "17",
+        "kode_kecamatan": "14",
+        "kode_wilayah": "331714"
+      },
+      "sarana_prasarana": {
+        "luas_tanah_milik": "11480 m2",
+        "sumber_listrik": "",
+        "akses_internet": ""
+      },
+      "kontak": {
+        "nomor_fax": "",
+        "nomor_telepon": "",
+        "email": "",
+        "website": ""
+      },
+      "lokasi": {
+        "koordinat": [
+          -6.6935544,
+          111.451965
+        ],
+        "lintang": -6.6935544,
+        "bujur": 111.451965
+      }
+    }
+  ],
+  "limit": 1,
+  "page": 1,
+  "last_updated": "2026-08-25T13:56:38+00:00"
+}

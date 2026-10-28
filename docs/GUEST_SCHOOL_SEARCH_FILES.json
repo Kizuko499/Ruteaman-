@@ -1,0 +1,98 @@
+[
+  {
+    "path": "app/Http/Controllers/GuestReportController.php",
+    "sha256": "5b8a065e0e8b23ed7acd01b26899114883a8ec7ce8dbc37e2d4bb5b8eb4d11b4"
+  },
+  {
+    "path": "app/Http/Requests/StoreGuestHazardRequest.php",
+    "sha256": "a65667366ad45aa94c004146a1bd7923f593dda15ceb0e64c20a7122123e80df"
+  },
+  {
+    "path": "app/Services/DapodikSchoolDirectory.php",
+    "sha256": "b878a7a0c44e1acd15b95f8ffae7269db4681f5a6227ccee75565b66b91bb02f"
+  },
+  {
+    "path": "app/Services/GuestSchoolSelection.php",
+    "sha256": "3d038c12eac95014e72925ec19760d964acfef2c895e7cfd74ab4f1005c8f1b3"
+  },
+  {
+    "path": "docs/GUEST_SCHOOL_SEARCH_QA.md",
+    "sha256": "52a033e32c00296e1190fa7a2a5ca24889da35de676a055f8a9de61c8e225e86"
+  },
+  {
+    "path": "docs/GUEST_SCHOOL_SEARCH_SETUP.md",
+    "sha256": "38cc9320149d020dc59ac9943419624651fa536ba240b1a16324fdbdb84395bc"
+  },
+  {
+    "path": "public/build/assets/app-DLEqAaVl.css",
+    "sha256": "17b7bdca6c8a94d6f7bb7ea045c75e1319bab55062ead8fb566c1613ab6c3e0d"
+  },
+  {
+    "path": "public/build/assets/app-jRWSdzB7.js",
+    "sha256": "c69d7074e67e305106824667134f83b67df54d494937f5e3dbe19a8124899e96"
+  },
+  {
+    "path": "public/build/assets/app-qzZ_SH5k.css",
+    "sha256": "bfb8fa80a3b93647655b8b98268b79c277c08d6ceaac96578d4059a3ec8be3b0"
+  },
+  {
+    "path": "public/build/assets/detail-BOOPu068.js",
+    "sha256": "5a1f4c99a04372edb5ea202bb09b8f612a950da4c3ebb2f233b3d5d422888a06"
+  },
+  {
+    "path": "public/build/assets/featured-rotator-BwZe-zh5.js",
+    "sha256": "386d744dc29f5b5b8e1ccae519a0f82869d9786dbec6f9feee7abebc9022f009"
+  },
+  {
+    "path": "public/build/assets/layers-2x-Bpkbi35X.png",
+    "sha256": "066daca850d8ffbef007af00b06eac0015728dee279c51f3cb6c716df7c42edf"
+  },
+  {
+    "path": "public/build/assets/layers-BWBAp2CZ.png",
+    "sha256": "1dbbe9d028e292f36fcba8f8b3a28d5e8932754fc2215b9ac69e4cdecf5107c6"
+  },
+  {
+    "path": "public/build/assets/list-CxWxiJV1.js",
+    "sha256": "76e424c3a9ecee2607b457f0617dc3d417dcf472c962d835dd716a08f3c110d5"
+  },
+  {
+    "path": "public/build/assets/marker-icon-hN30_KVU.png",
+    "sha256": "574c3a5cca85f4114085b6841596d62f00d7c892c7b03f28cbfa301deb1dc437"
+  },
+  {
+    "path": "public/build/assets/marker-shadow-f7SaPCxT.png",
+    "sha256": "264f5c640339f042dd729062cfc04c17f8ea0f29882b538e3848ed8f10edb4da"
+  },
+  {
+    "path": "public/build/assets/shared-BWnDjdZW.js",
+    "sha256": "42a0a832dc45169a1d29bdbf911dd566251ca3b32f6988e10de9a069b1b78ad4"
+  },
+  {
+    "path": "public/build/manifest.json",
+    "sha256": "75f709f598cb41d5a52d1c06ab71fcdc7a217d7fdbd02bf8d9e1091a431536d7"
+  },
+  {
+    "path": "resources/css/guest-school-search.css",
+    "sha256": "ac7b2f7d22effe677271c96ba94dd6e12eb89c6d1f04aad0601e435e98efef5c"
+  },
+  {
+    "path": "resources/js/features/guest-report.js",
+    "sha256": "87ae44861c6fe91d72b3dce600081a8521c85a76b2915d5f9823702f603b748b"
+  },
+  {
+    "path": "resources/js/features/guest-school-search.js",
+    "sha256": "e3123e56b5e30a559284140b66b7d557157548e36931f99fd16899e75aefffb8"
+  },
+  {
+    "path": "resources/views/hazards/guest-create.blade.php",
+    "sha256": "b524fecf1a767caec5df74c473dff9ebee1fa7b773b0deb6e2c4e75a81fde742"
+  },
+  {
+    "path": "tests/Feature/GuestReportTest.php",
+    "sha256": "36ea2c5b358ede4bd3956b0cdc884bfaf238f82ebaa2598688fa04f21fddc82e"
+  },
+  {
+    "path": "tests/Feature/GuestSchoolSearchTest.php",
+    "sha256": "5a33bf76cb05411a0c059d7f4020e0e1bc8db68ca89d1a71835c286a7d9facd7"
+  }
+]

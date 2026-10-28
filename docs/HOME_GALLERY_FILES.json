@@ -1,0 +1,150 @@
+{
+  "version": "Foto Beranda 1.0",
+  "base": "RuteAman v7.3 + Patch Panduan Publik",
+  "files": [
+    {
+      "path": "app/Http/Controllers/AdminHomeGalleryController.php",
+      "sha256": "cdaa3d75d13e693284054d0f34b0931adb7acbf24ac9d37e65e37853d25bf650"
+    },
+    {
+      "path": "app/Http/Controllers/HomeGalleryController.php",
+      "sha256": "58af9353fdc1fbf901cf001e709322f8b5bd87e4652b736939fee7e730adc493"
+    },
+    {
+      "path": "app/Models/HomeGalleryGroup.php",
+      "sha256": "de464ff9f8946ef7b7f7812e269e48b1fbf9f7ef35012e064ed70036cb19cb8c"
+    },
+    {
+      "path": "app/Models/HomeGalleryPhoto.php",
+      "sha256": "be5d59d1afbad7d8ececc3b8e222ae43c6c2c11acba8ef640854c029e139976f"
+    },
+    {
+      "path": "app/Services/HomeGalleryService.php",
+      "sha256": "4c478df133ab4f0ff1e9afdeb02cd57263ad2052d347ef64edcbcdb791e828c1"
+    },
+    {
+      "path": "config/home_gallery.php",
+      "sha256": "5618360e3b8b0602c9ee869db28e3127b74a7b2f3b0a3bef8f24144109fa80d1"
+    },
+    {
+      "path": "database/migrations/2026_10_13_000000_create_home_gallery.php",
+      "sha256": "a4fc6633f98296bd1ba32cb1a5b281dc2d74e365728d103e523f4ce45d45d0d6"
+    },
+    {
+      "path": "docs/HOME_GALLERY_SETUP.md",
+      "sha256": "023a6439fe247707cb7a4805e41ee56fb4bd5c7bfe3eae3b423ac36942fda093"
+    },
+    {
+      "path": "public/build/assets/app-1DTFk8zz.css",
+      "sha256": "13748a8189dc8c690fc902a1682d30ba289721688f32df4f2459a36de8e383de"
+    },
+    {
+      "path": "public/build/assets/app-C4YP-C8y.js",
+      "sha256": "8ab8ba11034af39eea70379fcf4e643e09d337d04a32479f9411d4abc1eaa9a4"
+    },
+    {
+      "path": "public/build/assets/app-qzZ_SH5k.css",
+      "sha256": "bfb8fa80a3b93647655b8b98268b79c277c08d6ceaac96578d4059a3ec8be3b0"
+    },
+    {
+      "path": "public/build/assets/detail-F9PV_v6k.js",
+      "sha256": "ccece8270c8e28cf74f3b1809aa7ff8d37c46c230811cc6943fa9a057ea40786"
+    },
+    {
+      "path": "public/build/assets/featured-rotator-DkBF7_pG.js",
+      "sha256": "f78f65b5a5aaf2ef5d591d6404b6ba92029d9e5a624bd0598d528b8072ae6fdd"
+    },
+    {
+      "path": "public/build/assets/layers-2x-Bpkbi35X.png",
+      "sha256": "066daca850d8ffbef007af00b06eac0015728dee279c51f3cb6c716df7c42edf"
+    },
+    {
+      "path": "public/build/assets/layers-BWBAp2CZ.png",
+      "sha256": "1dbbe9d028e292f36fcba8f8b3a28d5e8932754fc2215b9ac69e4cdecf5107c6"
+    },
+    {
+      "path": "public/build/assets/list-BrXo5qhv.js",
+      "sha256": "624cc652cdb5a199d5e108d1474a356efaa9a25cae6638ecf9a69d27de34f672"
+    },
+    {
+      "path": "public/build/assets/marker-icon-hN30_KVU.png",
+      "sha256": "574c3a5cca85f4114085b6841596d62f00d7c892c7b03f28cbfa301deb1dc437"
+    },
+    {
+      "path": "public/build/assets/marker-shadow-f7SaPCxT.png",
+      "sha256": "264f5c640339f042dd729062cfc04c17f8ea0f29882b538e3848ed8f10edb4da"
+    },
+    {
+      "path": "public/build/assets/shared-CjH7MsmX.js",
+      "sha256": "1d15a57d9c0a20d483df9dac6178a9e90eb87de7676390217bd7696592516e4c"
+    },
+    {
+      "path": "public/build/manifest.json",
+      "sha256": "9c2559950fa7b5d352717e188560382cf471f3fc273c77f4551b281e8ea89799"
+    },
+    {
+      "path": "public/images/banjir-jalan.webp",
+      "sha256": "f42d17d14decc1119d5529b62c9974e55ff6bed5d3c556f4ede82e422052d541"
+    },
+    {
+      "path": "public/images/jalan-berlubang.webp",
+      "sha256": "18e32205d6a5a3777bc04c77e3af205e820d7d088ae363382a24da7fac7f0fd0"
+    },
+    {
+      "path": "public/images/minim-penerangan.webp",
+      "sha256": "77cb9b27356fae38d9a1b6c73bfc7ef05b4ddd86fb4990b0a3f56069b49cd299"
+    },
+    {
+      "path": "public/images/pohon-tumbang.webp",
+      "sha256": "9f203c2c4b3ee3eb783b512ba5f05b48c8f896c70d35894cf1841088ee502a8a"
+    },
+    {
+      "path": "public/images/siswa-berangkat-ke-sekolah.webp",
+      "sha256": "066671a9bbe84d1d349afd45e9dc1faabf628ffdf81b5e0724e2b71dd2b506c9"
+    },
+    {
+      "path": "resources/css/app.css",
+      "sha256": "61c206ebfae5ca4ea0b2ee43a97a453de56bd5899fd7b8b493bd02db8af38073"
+    },
+    {
+      "path": "resources/js/app.js",
+      "sha256": "3e65dd05aee2c9df11549eb76dbba21b1296b6e36e3a2e5a8b7fb2b7e443cb1d"
+    },
+    {
+      "path": "resources/js/features/home-gallery.js",
+      "sha256": "8d3b9798c804e1a3d32e73b9dd8db4a250f84bdead5b2c3ea522072bb5628c7d"
+    },
+    {
+      "path": "resources/views/admin/home-gallery.blade.php",
+      "sha256": "5bfddb216414c7384cae084c4b609b84f7a3db5c1d708414cf8d2a666dbd3818"
+    },
+    {
+      "path": "resources/views/admin/layout.blade.php",
+      "sha256": "3356e8ab7f556a6875223656bc61ad7dac8390ce684cb92a2d22c00096a49126"
+    },
+    {
+      "path": "resources/views/partials/feature-showcase.blade.php",
+      "sha256": "db438ca73a9b7f440d47888753dffec6de55802c691e4f27cb47fff3b85d9f9a"
+    },
+    {
+      "path": "resources/views/partials/home-gallery-slots.blade.php",
+      "sha256": "771c9e0e69c03b862ec1915308df24a9e21637d8aa9b2824b80b80260907f297"
+    },
+    {
+      "path": "routes/admin.php",
+      "sha256": "90beef278db4facc7d560d14f062bc0de262597d2c71db39c62486c02144c832"
+    },
+    {
+      "path": "routes/web.php",
+      "sha256": "402b241a58aa2833ed1b26e846a5a6f9d80d0ae2ae75e797e8d780ab392d2848"
+    },
+    {
+      "path": "scripts/check-home-gallery.php",
+      "sha256": "a7932a9803128827f966c3ddf5e70d8c5884a146fed242a5f514ba0d23c2ef20"
+    },
+    {
+      "path": "tests/Feature/HomeGalleryTest.php",
+      "sha256": "700d0cef4a9c25d76bf7ce3b1f66ebc95190b4259dab1af9562171ceed35433a"
+    }
+  ]
+}

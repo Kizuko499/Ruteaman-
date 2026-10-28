@@ -1,0 +1,18 @@
+{
+  "source": "full school dashboard + campus v3/v6 + automatic map",
+  "javascript_tests_passed": 32,
+  "php_scoped_tests": {
+    "selected_tests": 64,
+    "assertions": 232,
+    "skipped": 19
+  },
+  "php_lint_files": 168,
+  "blade_templates_compiled": true,
+  "composer_vendor_matches_lock": true,
+  "laravel_version": "v13.34.0",
+  "assets_check_passed": true,
+  "production_deployed": false,
+  "production_database_tested": false,
+  "browser_tests_rerun": false,
+  "contains_production_data": false
+}

@@ -1,0 +1,1 @@
+<p>{{ __('Konfirmasi email untuk akun RuteAman.') }}</p><p><a href="{{ $verificationUrl }}">{{ __('Verifikasi email') }}</a></p><p>{{ __('Tautan berlaku 60 menit. Masuk ke akun yang meminta perubahan sebelum membuka tautan. Jika bukan kamu yang meminta, abaikan email ini.') }}</p>

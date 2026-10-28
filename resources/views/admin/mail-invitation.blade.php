@@ -1,0 +1,1 @@
+<p>{{ __('Anda diundang menjadi admin RuteAman.') }}</p><p><a href="{{ $inviteUrl }}">{{ __('Setel kata sandi') }}</a></p><p>{{ __('Tautan berlaku') }} {{ config('ruteaman_admin.invite_hours') }} {{ __('jam, sekali pakai. Jangan teruskan tautan ini. Alias adalah identitas login, bukan kotak surat.') }}</p>

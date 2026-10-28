@@ -1,0 +1,5 @@
+<?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+class School extends Model{protected static function booted():void{static::creating(function($school){$school->public_slug??='sekolah-'.strtolower((string)\Illuminate\Support\Str::ulid());});}public $timestamps=false;protected $fillable=['institution_type','country_code','campus_code','settings','public_slug','name','npsn','education_level','school_status','province_code','province_name','regency_code','regency_name','district_code','district_name','address','directory_synced_at','bmkg_area_code','timezone'];protected function casts():array{return ['directory_synced_at'=>'datetime','settings'=>'array','features'=>'array'];}public function users():HasMany{return $this->hasMany(User::class);}}

@@ -1,0 +1,3 @@
+import {conditionTypes,resolveConditionType} from './condition-types.js';
+import {escapeHtml} from './marker-state.js';
+export function mountConditionLegend(root,catalog=null){if(!root)return;const entries=Array.isArray(catalog)&&catalog.length?catalog.map(row=>[row.code,{...resolveConditionType(row.code,row),label:row.label}]):Object.entries(conditionTypes);if(!entries.some(([key])=>key==='handled'))entries.push(['handled',resolveConditionType('handled',{})]);root.innerHTML=entries.map(([key,type])=>`<span class="condition-legend-item" data-legend-type="${escapeHtml(key)}"><i style="color:${type.color}">${type.icon}</i>${escapeHtml(type.label)}</span>`).join('');}

@@ -1,0 +1,10 @@
+@extends('pages.account.layout')
+@section('title',__('Pengaturan'))
+@section('account-heading',__('Pengaturan'))
+@section('account-description',__('Preferensi sederhana, tanpa pelacakan profil.'))
+@section('account-content')
+<x-account-tabs/><div role="tabpanel" id="account-tab-panel" aria-labelledby="settings-tab">
+
+<form method="post" action="{{ route('account.preferences') }}" data-account-form class="settings-card"><h2>{{ __('Tampilan') }}</h2>@csrf @method('PATCH')<input type="hidden" name="locale" value="id"><label class="account-field">{{ __('Preferensi tampilan') }}<select name="appearance" data-appearance-value><option value="light" @selected($user->appearance==='light')>{{ __('Terang') }}</option><option value="system" @selected($user->appearance==='system')>{{ __('Ikuti perangkat') }}</option></select></label><p class="field-help">{{ __('Saat ini tema terang digunakan, termasuk saat perangkat gelap. Opsi gelap akan tersedia setelah seluruh komponen lolos pemeriksaan kontras.') }}</p><fieldset class="account-field"><legend>{{ __('Notifikasi email') }}</legend><label><input type="checkbox" name="notification_preferences[report_status]" value="1" @checked($user->wantsMail('report_status'))> {{ __('Perubahan status laporanku') }}</label><label><input type="checkbox" name="notification_preferences[report_comments]" value="1" @checked($user->wantsMail('report_comments'))> {{ __('Komentar pada laporan yang kuikuti') }}</label><label><input type="checkbox" name="notification_preferences[report_new_in_scope]" value="1" @checked($user->wantsMail('report_new_in_scope'))> {{ __('Laporan baru di sekolahku (verifikator/admin)') }}</label><label><input type="checkbox" name="notification_preferences[admin_activity]" value="1" @checked($user->wantsMail('admin_activity'))> {{ __('Aktivitas administratif') }}</label><p class="field-help">{{ __('Email keamanan akun (verifikasi, undangan, perubahan peran, penonaktifan) selalu dikirim dan tidak dapat dimatikan.') }}</p></fieldset><button class="btn account-primary">{{ __('Simpan tampilan') }}</button><p data-form-status role="status"></p></form>
+</div>
+@endsection

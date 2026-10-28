@@ -1,0 +1,82 @@
+/* Additive Leaflet marker styling; map layout/navigation/routes remain unchanged. */
+.condition-marker{background:none;border:0;display:grid;place-items:center;cursor:pointer;--marker-intensity:.48;--marker-glow:0;--marker-brightness:.88;--marker-pulse:0;--condition-size:30px}
+.condition-pin{position:relative;width:var(--condition-size);height:var(--condition-size);display:grid;place-items:center;background:#fff;border:2px solid #fff;border-radius:10px;box-shadow:0 1px 3px #14383a66;transition:width .2s,height .2s,filter 1.2s;filter:brightness(var(--marker-brightness))}
+.condition-face{position:absolute;inset:0;border-radius:7px;background:var(--condition-color);opacity:calc(var(--marker-intensity) * var(--marker-fill, .12));transition:opacity 1.2s ease-in-out}
+.condition-glyph{position:relative;display:grid;place-items:center;color:color-mix(in srgb,white var(--marker-white, 0%),var(--condition-color));width:78%;height:78%;transition:color 1.2s}
+.condition-glyph svg{width:100%;height:100%;filter:drop-shadow(0 0 1px #fff)}
+.condition-pin:before{content:'';position:absolute;inset:-5px;border:2px solid var(--condition-color);border-radius:14px;opacity:calc(var(--marker-glow) * .3);box-shadow:0 0 6px var(--condition-color);transition:opacity 1.2s ease-in-out;pointer-events:none}
+.condition-marker.has-recency-pulse .condition-pin:before{animation:condition-soft-pulse 2.2s ease-in-out infinite}
+@keyframes condition-soft-pulse{0%,100%{opacity:calc(var(--marker-pulse) * .35)}50%{opacity:var(--marker-pulse)}}
+.condition-history-dot{position:absolute;width:7px;height:7px;right:-3px;bottom:-3px;border:1px solid white;background:#657677;border-radius:50%}
+.condition-marker:focus-visible{outline:3px solid #1f6e70;outline-offset:0;border-radius:12px}.condition-marker:hover .condition-pin{box-shadow:0 0 0 2px #12383a,0 2px 5px #14383a44}
+.condition-popup .leaflet-popup-content-wrapper{border-radius:14px;border:1px solid #d9e3df;color:#12383a;box-shadow:0 6px 18px #14383a22}.condition-popup .leaflet-popup-content{margin:18px;line-height:1.5;font-size:14px;max-height:min(370px,45vh);overflow:auto}.condition-popup .leaflet-popup-close-button{width:44px;height:44px;font-size:24px;color:#12383a}
+.condition-popup-heading{display:flex;gap:10px;align-items:center;font-size:16px;margin:2px 30px 8px 0}.condition-popup-heading span{flex:none;width:28px;height:28px}.condition-popup-heading svg{width:28px;height:28px}.condition-popup-card p{margin:10px 0!important;font-size:14px}.condition-popup-card small{display:block;font-size:12px;color:#496365}.condition-popup-card dl{margin:12px 0}.condition-popup-card dl>div{display:grid;grid-template-columns:76px 1fr;gap:8px;margin-bottom:6px}.condition-popup-card dt{color:#496365}.condition-popup-card dd{margin:0;overflow-wrap:anywhere}.condition-popup-card a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:#1f6e70}.condition-handled{display:block;font-size:14px;color:#1f7669}.condition-nearby{border-top:1px solid #d9e3df;margin-top:8px;padding-top:8px}.condition-nearby summary{min-height:44px;cursor:pointer;font-weight:700}.condition-nearby button{display:block;min-height:44px;width:100%;text-align:left;background:#f2f7f4;border:1px solid #d9e3df;border-radius:8px;margin:6px 0;padding:8px;cursor:pointer}
+.condition-tooltip{font-size:14px;background:#fff;border:1px solid #d9e3df;color:#12383a;border-radius:8px}
+.map-legend.condition-map-legend{display:block;max-width:min(430px,calc(100% - 36px));font-size:12px;padding:10px 12px}.condition-route-key{display:flex;gap:12px;flex-wrap:wrap}.condition-map-legend details{margin-top:6px}.condition-map-legend summary{font-size:14px;min-height:32px;cursor:pointer;font-weight:700;color:#12383a}.condition-legend-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;max-height:170px;overflow:auto;padding:8px 0}.condition-legend-item{font-size:14px}.condition-legend-item i{display:block;flex:none;width:22px;height:22px}.condition-legend-item svg{width:22px;height:22px}.condition-legend-note{display:block;font-size:12px;color:#345356;max-width:330px;margin-top:4px}.condition-sync-status{font-size:14px;line-height:1.5;color:#496365;margin:6px 0 12px}.condition-sync-status.is-stale{color:#943f18}.condition-list-icon svg{width:24px;height:24px}.condition-list-icon{background:#fff!important;border:1px solid currentColor;border-radius:10px!important}
+@media(max-width:900px){.map-legend.condition-map-legend{left:55px;top:12px;max-width:calc(100% - 70px)}.condition-legend-grid{max-height:140px;gap:6px 10px}.condition-map-legend summary{min-height:32px}.condition-popup .leaflet-popup-content{max-height:28vh}}
+@media(prefers-reduced-motion:reduce){.condition-marker .condition-pin:before{animation:none!important}.condition-marker *{transition:none!important}}
+
+.map-legend.condition-map-legend.liquid-glass{background:rgba(255,255,255,.96)!important}
+.condition-map-legend .condition-legend-grid{max-height:210px}
+@media(max-width:900px){.condition-map-legend .condition-legend-grid{max-height:140px}}
+
+.condition-popup-open .condition-map-legend{visibility:hidden;pointer-events:none}
+
+.condition-animation-paused .condition-pin:before{animation:none!important}
+.condition-dense-view .condition-pin:before{opacity:0!important;box-shadow:none;animation:none!important}
+.leaflet-container .condition-popup a.leaflet-popup-close-button{width:44px;height:44px;line-height:44px;font-size:24px;color:#12383a}
+.leaflet-container .condition-popup-card a{color:#1f6e70}
+/* Existing fixed navigation must not intercept Leaflet's zoom controls. */
+@media(min-width:901px){.graph-map-page #route-map .leaflet-top.leaflet-left{top:112px}}
+@media(max-width:900px){.condition-popup .leaflet-popup-content{max-width:calc(100vw - 140px)}}
+
+.condition-map-legend .condition-legend-note,.condition-popup-card small{font-size:14px}
+.condition-legend-scroll-note{display:none}
+@media(max-width:900px){.condition-legend-scroll-note{display:block;font-size:14px;color:#496365;margin-top:6px}.condition-map-legend .condition-legend-grid{max-height:125px}}
+
+/* Legenda peta ramping (samakan dengan blok data-ruteaman-legend di map.blade.php) */
+.map-legend.condition-map-legend{border-radius:16px;padding:9px 12px 10px;max-width:min(400px,calc(100% - 24px))}
+.condition-route-key{gap:8px 12px;flex-wrap:nowrap}
+.condition-route-key>span{white-space:nowrap}
+.condition-route-key .legend-a,.condition-route-key .legend-b{width:20px}
+.condition-route-key .legend-school{width:10px;height:10px}
+.condition-map-legend details{margin-top:4px}
+.condition-map-legend summary{font-size:13px;min-height:26px;display:flex;align-items:center;list-style:none}
+.condition-map-legend summary::-webkit-details-marker{display:none}
+.condition-map-legend summary::after{content:"";margin-left:auto;width:8px;height:8px;flex:none;border-right:2px solid #34565A;border-bottom:2px solid #34565A;transform:rotate(45deg);transition:transform .2s ease}
+.condition-map-legend details[open] summary::after{transform:rotate(225deg)}
+.condition-map-legend .condition-legend-grid{gap:6px 12px;max-height:176px;padding:6px 0 2px}
+.condition-map-legend .condition-legend-item{display:flex;align-items:center;font-size:13px;gap:8px}
+.condition-map-legend .condition-legend-item i{width:20px;height:20px}
+.condition-map-legend .condition-legend-item svg{width:20px;height:20px}
+.condition-map-legend .condition-legend-note{font-size:11.5px;line-height:1.45;margin-top:6px;max-width:none}
+.condition-map-legend .condition-legend-scroll-note{font-size:11.5px}
+@media (max-width:900px){
+ .map-page.graph-map-page .map-legend.condition-map-legend{left:12px;right:auto;top:82px;bottom:auto;max-width:calc(100% - 24px)}
+ .condition-map-legend .condition-legend-grid{max-height:132px}
+ .map-legend.condition-map-legend:not(:has(details[open])){background:transparent!important;box-shadow:none;border-color:transparent;padding:0;max-width:none}
+ .map-legend.condition-map-legend:not(:has(details[open])) .condition-route-key{display:none}
+ .map-legend.condition-map-legend:not(:has(details[open])) details{margin-top:0}
+ .map-legend.condition-map-legend:not(:has(details[open])) summary{background:rgba(255,255,255,.96);border:1px solid #DFE9E4;border-radius:999px;padding:8px 13px;min-height:0;font-size:12.5px;gap:8px;box-shadow:0 1px 2px rgba(18,56,58,.06),0 8px 20px rgba(18,56,58,.12)}
+ .map-legend.condition-map-legend:not(:has(details[open])) summary::before{content:"";width:15px;height:15px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F6E70' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M9 6h11M9 12h11M9 18h11'/%3E%3Ccircle cx='4.5' cy='6' r='1.7' fill='%231F6E70' stroke='none'/%3E%3Ccircle cx='4.5' cy='12' r='1.7' fill='%231F6E70' stroke='none'/%3E%3Ccircle cx='4.5' cy='18' r='1.7' fill='%231F6E70' stroke='none'/%3E%3C/svg%3E") center/contain no-repeat}
+ .map-legend.condition-map-legend:has(details[open]) .condition-legend-grid{max-height:120px}
+}
+
+/* Legenda tab vertikal (samakan dengan blok data-ruteaman-legend v2 di map.blade.php) */
+.map-legend.condition-map-legend:has(details[open]){width:min(320px,calc(100% - 24px));max-width:min(320px,calc(100% - 24px));animation:ra-legend-in .28s cubic-bezier(.32,.72,.24,1)}
+@keyframes ra-legend-in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+.map-legend.condition-map-legend:not(:has(details[open])){width:40px;padding:0;border-radius:999px;background:rgba(255,255,255,.96)!important;border:1px solid #DFE9E4;box-shadow:0 1px 2px rgba(18,56,58,.06),0 10px 24px rgba(18,56,58,.14)}
+.map-legend.condition-map-legend:not(:has(details[open])) .condition-route-key{display:none}
+.map-legend.condition-map-legend:not(:has(details[open])) details{margin-top:0}
+.map-legend.condition-map-legend:not(:has(details[open])) summary{flex-direction:column;justify-content:center;gap:10px;min-height:84px;padding:12px 0;font-size:0}
+.map-legend.condition-map-legend:not(:has(details[open])) summary::before{content:"";width:17px;height:17px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F6E70' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M9 6h11M9 12h11M9 18h11'/%3E%3Ccircle cx='4.5' cy='6' r='1.7' fill='%231F6E70' stroke='none'/%3E%3Ccircle cx='4.5' cy='12' r='1.7' fill='%231F6E70' stroke='none'/%3E%3Ccircle cx='4.5' cy='18' r='1.7' fill='%231F6E70' stroke='none'/%3E%3C/svg%3E") center/contain no-repeat}
+.map-legend.condition-map-legend:not(:has(details[open])) summary::after{margin:0;transform:rotate(135deg)}
+.condition-map-legend summary::after{transform:rotate(-45deg)}
+.map-page.graph-map-page .map-legend.condition-map-legend{left:auto;right:18px;top:auto;bottom:84px}
+@media (max-width:900px){
+ .map-page.graph-map-page .map-legend.condition-map-legend{left:auto;right:12px;top:68px;bottom:auto}
+}
+@media (prefers-reduced-motion:reduce){
+ .map-legend.condition-map-legend:has(details[open]){animation:none}
+}
+.condition-map-legend details[open] summary::after{transform:rotate(-45deg)}

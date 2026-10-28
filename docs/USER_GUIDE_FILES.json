@@ -1,0 +1,157 @@
+{
+  "version": "Panduan Pengguna 1.1 — akses publik",
+  "base": "RuteAman v7.3 + menu cleanup",
+  "chapters": 18,
+  "public_chapters": 15,
+  "screenshots": 22,
+  "files": [
+    {
+      "path": "app/Http/Controllers/UserGuideController.php",
+      "sha256": "4bf36d6bfec2d7227ec3f29cf131c0e05dc33859442a55308bebd40f08385737"
+    },
+    {
+      "path": "config/user_guide.php",
+      "sha256": "4fe939a0903b86018e19f64ebca99b40593dc0a7e09e3ceea7966050de8516fb"
+    },
+    {
+      "path": "docs/USER_GUIDE_SETUP.md",
+      "sha256": "de7f478ae10ae07caeec51996019ae577d92792f6bff5335dfd20b2e9a53832e"
+    },
+    {
+      "path": "public/css/home-guide.css",
+      "sha256": "8188e394f4e5f51d57a79669ac6d1c80b8066a94a33641f34de3e7f3ce51a61f"
+    },
+    {
+      "path": "public/css/user-guide.css",
+      "sha256": "b4302363b3f13992c16623a100ca514f9f0314fdc37f73ee6009a4cf32d46962"
+    },
+    {
+      "path": "public/images/user-guide/admin.webp",
+      "sha256": "fe14d0499a0ba49c28f673143728189142626b171f9aab5ee7dd04b8780221fa"
+    },
+    {
+      "path": "public/images/user-guide/akun.webp",
+      "sha256": "e5efbb00f7441e26e47490bd67f7529b1036054c1815f819eafd473c7d7ff88e"
+    },
+    {
+      "path": "public/images/user-guide/beranda.webp",
+      "sha256": "4dcb547f999190a62dd177100c72c851e56280efe788211c5947eb28d040b558"
+    },
+    {
+      "path": "public/images/user-guide/daftar.webp",
+      "sha256": "8c09ad1942a7d88a593087ee0a8fdc884aa8515d3e9539b431a501f3258e567c"
+    },
+    {
+      "path": "public/images/user-guide/graph.webp",
+      "sha256": "b509fc9b4b2e40ca3e34ee843f88a335e9ffec4c15cae218b4008abcc6119a21"
+    },
+    {
+      "path": "public/images/user-guide/keamanan.webp",
+      "sha256": "ca3cc462cdc41dafec1c29fbbbd5e6e2d46e9875d3939dcf7794e902207c3352"
+    },
+    {
+      "path": "public/images/user-guide/kirim-akun.webp",
+      "sha256": "d308f3994f5bf35f60a031903982ac3bd2ce6c35b580b3d577cb90769ae7be44"
+    },
+    {
+      "path": "public/images/user-guide/kirim-tamu.webp",
+      "sha256": "3775f61f8382f7a3094661a6ebe4aaabfcc908dadd118221ce150ce45f1f3980"
+    },
+    {
+      "path": "public/images/user-guide/kondisi.webp",
+      "sha256": "f4e9dc1882c864b11a53d3eb7a1afce85dc082efe1a033654c2b7e4703ca83b5"
+    },
+    {
+      "path": "public/images/user-guide/lapor-akun.webp",
+      "sha256": "c09ac47bd09ca79b1bdd14bbb0082816f3b5872719fd13f7016a9c24a58eab31"
+    },
+    {
+      "path": "public/images/user-guide/lapor-tamu.webp",
+      "sha256": "953156ac90851c709b0b4443027a7f6d81cc48925811f04c8f79e890b78a0bb3"
+    },
+    {
+      "path": "public/images/user-guide/laporanku.webp",
+      "sha256": "0479e2394cdf6d7133b11541995f28194ff388f069d334e476735303f5d06216"
+    },
+    {
+      "path": "public/images/user-guide/lokasi.webp",
+      "sha256": "31fbb0c20355321edc524004ef2ada87b91876bdbcfb463db4bb1ac6913cc08a"
+    },
+    {
+      "path": "public/images/user-guide/masuk.webp",
+      "sha256": "81d6bae440bdae040058f5acd1ddf7e375510eac05e1962405515bac3df8261f"
+    },
+    {
+      "path": "public/images/user-guide/notifikasi.webp",
+      "sha256": "bd2c3ef3c4ddeb8a9b841fff134b7807c7dd35cb516ff1134f35efcf4438c21f"
+    },
+    {
+      "path": "public/images/user-guide/pengaturan.webp",
+      "sha256": "dfa989e8da4ad729bd0197c1e19784fb91ce1bc77633c3deb03e207f23a54b60"
+    },
+    {
+      "path": "public/images/user-guide/peta.webp",
+      "sha256": "4d02cd596bcabc8042b184a2b0e5dcd36bc2cc04dc0c5dad4cd3ce23d339956c"
+    },
+    {
+      "path": "public/images/user-guide/privasi.webp",
+      "sha256": "0fd083cb1eb5fe3e6f2ce10fec693b97a7dad84d354ee1b2f8e76481b18fea8b"
+    },
+    {
+      "path": "public/images/user-guide/profil.webp",
+      "sha256": "1de79633517941f2b95c4ab93ab1a03960405c21d469461430802190232f37bb"
+    },
+    {
+      "path": "public/images/user-guide/sekolah.webp",
+      "sha256": "453ab55708d8c0afbf693f0615fe19d7f36a8dfd646140320178f5564b07ec26"
+    },
+    {
+      "path": "public/images/user-guide/terkirim.webp",
+      "sha256": "aae97eb800b2f4832c65ed649eeb4353701686e4dc6ce4a89660233258ad5720"
+    },
+    {
+      "path": "public/images/user-guide/verifikasi.webp",
+      "sha256": "73dc65df450c48c812f842b3ca2c8dfc13939c62a6f0f52483fe9a65e075f07d"
+    },
+    {
+      "path": "resources/views/components/account-menu.blade.php",
+      "sha256": "b96a4fdaa7d652a5b2e6bc1bafdc67100fb4a7da52e2482e89d0aa960d4eaf1f"
+    },
+    {
+      "path": "resources/views/landing.blade.php",
+      "sha256": "d8e171844898fdf8cd59e99ca59479b59908e67c28b721ae0b5d3bd78aa67764"
+    },
+    {
+      "path": "resources/views/map.blade.php",
+      "sha256": "4d9b6fedbe7ee8d85405a08bb6374df891f892411272ccf974b773c17045eb97"
+    },
+    {
+      "path": "resources/views/pages/account/guide.blade.php",
+      "sha256": "77cbeb2f9f74454331eb11496b1b942b698d840a61242d3f67cc6863bdca6a09"
+    },
+    {
+      "path": "resources/views/pages/account/profile.blade.php",
+      "sha256": "f6afdfbe069e58f5dcf6a961915ccff1f45bf291429af47a3f5d761267efa0d8"
+    },
+    {
+      "path": "resources/views/partials/nav.blade.php",
+      "sha256": "936f286e6fa5205b72c1d52488743f3457e45878714ab3b43851d5c29b871ecb"
+    },
+    {
+      "path": "routes/web.php",
+      "sha256": "d229a3c1b04a29d571de8eec4db2c99f28f18b3c948f1b2cc5f4610d86cff0d7"
+    },
+    {
+      "path": "scripts/check-user-guide.php",
+      "sha256": "0962031b6acfc4816013f529fc2c4aed3ffbb9fb3c2c188dd9f844954ab278b5"
+    },
+    {
+      "path": "tests/Feature/AccountFeatureTest.php",
+      "sha256": "e5303f1adf93cdcf01377d5a85d9ce1d8504ff4c11f7beae8722def5b618123d"
+    },
+    {
+      "path": "tests/Feature/UserGuideTest.php",
+      "sha256": "18f4e4ff75f5803045c6c4b324c9b4bf9fd9a038d93c63d4f52839b9b8d89a91"
+    }
+  ]
+}

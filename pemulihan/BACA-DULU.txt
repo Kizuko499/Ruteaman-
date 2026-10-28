@@ -1,0 +1,47 @@
+RUTEAMAN — SOURCE LENGKAP SEKOLAH/KAMPUS — PEMULIHAN CPANEL
+
+INI APLIKASI LENGKAP, BUKAN PATCH. Source sekolah digabung dengan direktori kampus v3, pembaruan UI/layer lintas wilayah v4/v5/v6, dan pemuatan kondisi otomatis. Tidak memakai branch masyarakat umum.
+
+ISI
+- Root Laravel lengkap: artisan, app, bootstrap, config, routes, resources, database migrations/seeders, tests, composer/package lock, dan vendor yang diselaraskan dengan composer.lock.
+- public_html lengkap: index.php cPanel, .htaccess, JS/CSS build, font, gambar dan aset publik. index.php menunjuk ../ruteaman dan memakai public_html sebagai public path.
+- Salinan public tetap tersedia pada ruteaman/public. Aset CSS/build sama di kedua lokasi.
+- Admin berjenjang, alur sekolah/kampus, direktori kampus, serta peta kondisi otomatis. Data yang ditampilkan tetap mengikuti publikasi/cakupan layer; polling tidak memaksa kamera kembali setelah interaksi pengguna.
+- Tidak menyertakan .env, database produksi/dump SQL, akun/laporan pengguna, upload/foto, session atau log lama. ZIP ini memulihkan KODE, bukan backup data server.
+- Node_modules tidak disertakan. public/build sudah dibangun, sehingga tidak perlu npm build di hosting untuk pemulihan ini. Vendor disertakan; folder Laravel tidak lagi kosong/tanpa artisan.
+
+PENTING SEBELUM EXTRACT
+1. Jangan kosongkan Trash cPanel. Folder .trash/RuteAman bisa masih menyimpan .env, APP_KEY lama, storage/upload atau database berbasis file.
+2. Backup folder/file yang masih ada dan database hosting. Jika situs lain berada di public_html yang sama, jangan timpa web root tanpa memeriksa.
+3. PHP dan ekstensi server harus sesuai platform_check Composer. Source memerlukan PHP >=8.3; paket terkunci bisa memerlukan lebih tinggi. Situs Anda terakhir menampilkan PHP 8.5. Jangan mengubah versi PHP secara sembarang.
+
+PEMULIHAN APLIKASI LAMA
+1. Upload ZIP lalu EXTRACT DI HOME CPANEL, yaitu lokasi yang menampilkan public_html dan folder aplikasi sejajar. ZIP mempunyai root langsung ruteaman/ dan public_html/. Tidak ada folder pembungkus. Linux membedakan RuteAman dan ruteaman; paket ini memakai ruteaman huruf kecil.
+2. Lewat File Manager, aktifkan Show Hidden Files. SALIN .env LAMA dari Trash/backup ke ~/ruteaman/.env. Pertahankan APP_KEY, kredensial database, konfigurasi mail/routing, dan pengaturan lama. Jangan menjalankan key:generate bila memakai database lama.
+3. Pulihkan storage/upload lama bila tersedia ke ~/ruteaman/storage. Jangan menyamakan folder kosong dalam ZIP dengan backup foto/laporan. Jika database lama memakai SQLite, pulihkan file database sesuai DB_DATABASE di .env juga.
+4. Jalankan di Terminal BARU:
+   cd "$HOME/ruteaman"
+   php artisan optimize:clear
+   php artisan package:discover --ansi
+   php artisan ruteaman:campus-ui-check
+   php artisan view:cache
+   php artisan migrate:status
+   Perintah migrate:status hanya memeriksa status. Jangan menjalankan migrate:fresh, db:wipe atau seeding demo pada database lama.
+5. Jika migrate:status menunjukkan migrasi kampus belum berjalan, backup database lalu review migrasi yang pending sebelum php artisan migrate --force. Jangan ulang impor/seeding jika data lama sudah ada.
+6. Untuk akses upload melalui web root terpisah, buat link hanya jika lokasi belum ada:
+   if [ ! -e "$HOME/public_html/storage" ] && [ ! -L "$HOME/public_html/storage" ]; then
+       ln -s ../ruteaman/storage/app/public "$HOME/public_html/storage"
+   fi
+   Jangan menghapus folder/link storage yang sudah ada tanpa memeriksa isinya.
+7. storage dan bootstrap/cache harus bisa ditulis oleh akun PHP/hosting. Sesuaikan kepemilikan hosting; jangan gunakan 777. ZIP memakai folder 755 dan file 644. Jika extractor mempertahankan izin aset lama, perbaiki hanya folder aset terkait.
+8. Jika maintenance aktif setelah pemulihan dan pemeriksaan berhasil, jalankan php artisan up. Bersihkan cache/CDN lalu buka /map pada jendela privat/hard refresh.
+9. Pastikan APP_DEBUG=false untuk produksi, lalu php artisan config:clear jika mengubah .env. Jangan kirim .env/kredensial ke chat.
+
+JIKA .ENV LAMA TIDAK DITEMUKAN
+Source tetap tersedia, tetapi pemulihan data lama memerlukan kredensial database dan APP_KEY lama. Cari backup hosting/Trash atau hubungi hosting. Jangan membuat key baru dan menganggapnya pemulihan yang sama. .env.example hanya template kosong, bukan konfigurasi produksi Anda. Instalasi yang benar-benar baru harus dikonfigurasi terpisah mengikuti README, dengan database baru.
+
+APA YANG TIDAK DIJAMIN
+Paket belum dipasang ke server Anda. Status database produksi, data sekolah/kampus yang telah diimpor, akun, foto, APP_KEY dan konfigurasi hosting tidak dapat dipulihkan hanya dari source. Tidak menjalankan migrasi atau seeding ke server Anda. Catatan validasi paket tersedia di ruteaman/pemulihan/VALIDASI.json.
+
+PENGEMBANGAN
+Source JS/CSS dan composer/package lock disertakan. Jika mengubah frontend, jalankan npm ci lalu npm run build di lingkungan pengembangan dan salin seluruh build/manifest ke kedua public. Composer dapat digunakan untuk memasang ulang vendor dari lock jika diperlukan; jangan update dependensi secara acak saat pemulihan.

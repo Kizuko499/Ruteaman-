@@ -1,0 +1,2 @@
+<datalist id="landing-school-options">@foreach($schools ?? [] as $item)<option value="{{ $item->name }}">{{ $item->npsn ? __('NPSN ').$item->npsn : (($item->institution_type??'school')==='campus'?__('Kampus terdaftar'):__('Sekolah di peta')) }}</option>@if($item->npsn)<option value="{{ $item->npsn }}">{{ $item->name }}</option>@endif @endforeach</datalist>
+<select id="featured-school-options">@include('partials.institution-options',['institutions'=>$schools ?? [],'selectedId'=>null,'useSlug'=>true])</select>
