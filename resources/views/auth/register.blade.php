@@ -133,8 +133,8 @@
    box.appendChild(b);
   });
  }
- function lockSelect(){sel.disabled=true;q.setAttribute('readonly','readonly');clearBtn.hidden=false;}
- function unlockSelect(){sel.disabled=false;sel.value='';q.removeAttribute('readonly');q.value='';box.innerHTML='';clearBtn.hidden=true;msg('Ketik minimal 3 karakter nama kampus atau ID.');}
+ function lockSelect(){q.setAttribute('readonly','readonly');clearBtn.hidden=false;}
+ function unlockSelect(){sel.value='';q.removeAttribute('readonly');q.value='';box.innerHTML='';clearBtn.hidden=true;msg('Ketik minimal 3 karakter nama kampus atau ID.');}
  function select(item){
   if(item.source==='registered'){
    var opt=null;
@@ -202,18 +202,18 @@
    </label>
    <p id="reg-school-nat-status" class="directory-status" role="status" aria-live="polite"></p>
    <div id="reg-school-nat-results" class="campus-search-results" role="listbox" aria-label="{{ __('Hasil pencarian nasional') }}"></div>
-   <p class="directory-help" style="margin-top:12px">{{ __('Atau pilih wilayah, cari sekolah, lalu pilih hasilnya. Setelah dipilih, nama dan NPSN dikunci sampai kamu menekan Ganti.') }}</p>
-   <div class="directory-grid directory-grid--regions">
+   <p class="directory-help" style="margin-top:12px" data-region-block>{{ __('Atau pilih wilayah, cari sekolah, lalu pilih hasilnya. Setelah dipilih, nama dan NPSN dikunci sampai kamu menekan Ganti.') }}</p>
+   <div class="directory-grid directory-grid--regions" data-region-block>
     <label>{{ __('Provinsi') }}<select id="register-province" name="province_code" required><option value="">{{ __('Memuat provinsi…') }}</option></select></label>
     <label>Kabupaten/Kota<select id="register-regency" name="regency_code" required disabled><option value="">{{ __('Pilih provinsi dahulu') }}</option></select></label>
     <label>{{ __('Kecamatan') }}<select id="register-district" name="district_code" required disabled><option value="">{{ __('Pilih kabupaten/kota dahulu') }}</option></select></label>
    </div>
-   <label for="school-directory-query">{{ __('Cari sekolah atau NPSN') }}
+   <label for="school-directory-query" data-region-block>{{ __('Cari sekolah atau NPSN') }}
     <input id="school-directory-query" name="school_query" value="{{ old('school_query') }}" type="search" placeholder="{{ __('Contoh: SMAN 8 Jakarta atau 20102568') }}" minlength="3" autocomplete="off" disabled>
    </label>
    <input autocomplete="off" type="hidden" id="school-directory-npsn" name="school_npsn" value="{{ old('school_npsn') }}">
    <input type="hidden" id="school-directory-name" name="school_name" value="{{ old('school_name') }}">
-   <div class="directory-status" data-directory-status role="status" aria-live="polite">{{ __('Pilih provinsi untuk memulai.') }}</div>
+   <div class="directory-status" data-directory-status data-region-block role="status" aria-live="polite">{{ __('Pilih provinsi untuk memulai.') }}</div>
    <div class="directory-selected liquid-glass" data-glass-variant="row" data-directory-selected @if(!old('school_npsn')) hidden @endif>
     <span><small>{{ __('Sekolah dipilih') }}</small><b data-selected-name>{{ old('school_name') }}</b><em data-selected-npsn>{{ old('school_npsn') ? __('NPSN ').old('school_npsn') : '' }}</em></span>
     <button type="button" class="text-link" data-change-school>{{ __('Ganti') }}</button>
@@ -237,15 +237,31 @@
  const npsnF=document.getElementById('school-directory-npsn'),nameF=document.getElementById('school-directory-name');
  const fieldset=q?q.closest('fieldset'):null;
  if(!q||!npsnF)return;
- // Sembunyikan bagian wilayah saat nasional dipakai, dan sebaliknya
- const regionDiv=fieldset?fieldset.querySelector('.directory-grid--regions'):null;
+ // Sembunyikan bagian wilayah saat nasional dipakai, sampai pilihan nasional dihapus (tombol x)
+ const regionBlocks=fieldset?Array.from(fieldset.querySelectorAll('[data-region-block]')):[];
  const regionQuery=fieldset?fieldset.querySelector('#school-directory-query'):null;
+ const provSel=fieldset?fieldset.querySelector('#register-province'):null;
+ const regSel=fieldset?fieldset.querySelector('#register-regency'):null;
+ const disSel=fieldset?fieldset.querySelector('#register-district'):null;
+ function setRegionVisible(v){
+  regionBlocks.forEach(el=>{el.style.display=v?'':'none';});
+  if(!v){[provSel,regSel,disSel].forEach(s=>{if(s){s.disabled=true;s.required=false;}});if(regionQuery)regionQuery.disabled=true;}
+  else{
+   [provSel,regSel,disSel].forEach(s=>{if(s)s.required=true;});
+   if(provSel)provSel.disabled=false;
+   if(regSel)regSel.disabled=!provSel||!provSel.value;
+   if(disSel)disSel.disabled=!regSel||!regSel.value;
+   if(regionQuery)regionQuery.disabled=!disSel||!disSel.value;
+  }
+ }
  let timer=null,ctrl=null,locked=false;
  const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
  function msg(t){if(st)st.textContent=t;}
  function lock(name,npsn){
   locked=true;npsnF.value=npsn;nameF.value=name;
   q.value=name;q.setAttribute('readonly','readonly');clearBtn.hidden=false;box.innerHTML='';
+  if(fieldset)fieldset.dataset.natLocked='1';
+  setRegionVisible(false);
   // Update panel selected bawaan
   const sel=fieldset.querySelector('[data-directory-selected]');
   if(sel){sel.hidden=false;sel.querySelector('[data-selected-name]').textContent=name;sel.querySelector('[data-selected-npsn]').textContent='NPSN '+npsn;}
@@ -253,10 +269,14 @@
  }
  function unlock(){
   locked=false;npsnF.value='';nameF.value='';q.value='';q.removeAttribute('readonly');clearBtn.hidden=true;box.innerHTML='';
+  if(fieldset)delete fieldset.dataset.natLocked;
+  setRegionVisible(true);
   const sel=fieldset.querySelector('[data-directory-selected]');if(sel)sel.hidden=true;
   msg('');
  }
  clearBtn.addEventListener('click',()=>{unlock();q.focus();});
+ const gantiBtn=fieldset?fieldset.querySelector('[data-change-school]'):null;
+ if(gantiBtn)gantiBtn.addEventListener('click',()=>{if(locked)unlock();});
  async function search(){
   if(locked)return;
   const term=q.value.trim();box.innerHTML='';

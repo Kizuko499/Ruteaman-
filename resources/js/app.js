@@ -337,6 +337,14 @@ document.querySelectorAll('[data-school-directory]').forEach(directory=>{
  directory.querySelector('[data-change-school]')?.addEventListener('click',()=>{clearSchool();query.value='';query.disabled=!district.value;query.focus();status.textContent=uiText("Cari dan pilih sekolah pengganti.");});
  // Capture runs before the generic auth-submit lock. Rebuild POST values from the confirmed state.
  form.addEventListener('submit',event=>{
+  // Mode kampus tidak memakai direktori sekolah: jangan pernah menahan submit.
+  const kindSel=form.querySelector('#register-institution-type');
+  if(kindSel&&kindSel.value==='campus')return;
+  // Pilihan dari pencarian nasional sah walau dropdown wilayah kosong:
+  // kode wilayah diturunkan & diverifikasi server dari NPSN.
+  if(directory.dataset.natLocked==='1'&&/^[A-Z0-9]{8}$/.test(String(npsn.value||'').trim().toUpperCase())){
+   cancelSearch();if(backup)backup.value=String(npsn.value).trim().toUpperCase();return;
+  }
   const matches=chosen&&chosen.province===province.value&&chosen.regency===regency.value&&chosen.district===district.value;
   if(regionLoading||!matches||!/^[A-Z0-9]{8}$/.test(chosen.npsn)){
    event.preventDefault();status.textContent=regionLoading?uiText("Wilayah masih dimuat. Tunggu sebentar sebelum daftar."):uiText("Pilihan sekolah belum tersimpan. Cari dan pilih sekolah sebelum daftar.");

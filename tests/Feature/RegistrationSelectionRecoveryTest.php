@@ -36,6 +36,11 @@ class RegistrationSelectionRecoveryTest extends TestCase {
   $this->post('/register',[...$this->data(),'selected_school_npsn'=>'20363192','password_confirmation'=>'DifferentFixture123!'])
    ->assertSessionHasErrors('password')->assertSessionHasInput('school_npsn','20363192')->assertSessionHasInput('school_name','MAN 2 REMBANG')->assertSessionHasInput('district_code','33.17.14');
  }
+ public function test_nationwide_selection_registers_without_region_codes():void {
+  $data=$this->data();unset($data['province_code'],$data['regency_code'],$data['district_code']);
+  $this->post('/register',[...$data,'school_npsn'=>'20363192'])->assertRedirect();
+  $user=User::where('email','selection-recovery@ruteaman.test')->firstOrFail();$this->assertAuthenticatedAs($user);$this->assertSame('20363192',$user->school->npsn);$this->assertSame('33.17.14',$user->school->district_code);
+ }
  public function test_missing_selection_has_an_indonesian_error_message():void {
   $this->post('/register',$this->data())->assertSessionHasErrors(['school_npsn'=>'Pilihan sekolah belum tersimpan. Pilih sekolah dari hasil pencarian atau masukkan NPSN yang lengkap.']);
  }

@@ -138,9 +138,9 @@ class DapodikSchoolDirectory
         return $items;
     }
 
-    public function import(string $npsn, string $provinceCode, string $regencyCode, string $districtCode): School
+    private function detailRecord(string $npsn): ?array
     {
-        $record = Cache::remember(
+        return Cache::remember(
             "school.directory.detail.v2.{$npsn}",
             now()->addHours(12),
             function () use ($npsn) {
@@ -162,6 +162,32 @@ class DapodikSchoolDirectory
                 return $record;
             }
         );
+    }
+
+    /**
+     * Impor sekolah hanya dari NPSN (alur pencarian nasional): kode wilayah
+     * diturunkan dari nama wilayah pada catatan direktori itu sendiri,
+     * lalu diverifikasi penuh oleh import().
+     */
+    public function importNationwide(string $npsn): School
+    {
+        $record = $this->detailRecord($npsn);
+        if (! $record) {
+            throw new RuntimeException('Sekolah tidak ditemukan pada direktori nasional.');
+        }
+        $province = collect($this->provinces())->first(fn (array $item) => $this->sameRegion($record['province'] ?? '', $item['name'] ?? ''));
+        $regency = $province ? collect($this->regencies($province['code']))->first(fn (array $item) => $this->sameRegion($record['regency'] ?? '', $item['name'] ?? '')) : null;
+        $district = ($province && $regency) ? collect($this->districts($province['code'], $regency['code']))->first(fn (array $item) => $this->sameRegion($record['district'] ?? '', $item['name'] ?? '')) : null;
+        if (! $province || ! $regency || ! $district) {
+            throw new RuntimeException('Wilayah sekolah tidak dapat dikenali dari direktori nasional.');
+        }
+
+        return $this->import($npsn, $province['code'], $regency['code'], $district['code']);
+    }
+
+    public function import(string $npsn, string $provinceCode, string $regencyCode, string $districtCode): School
+    {
+        $record = $this->detailRecord($npsn);
         $province = collect($this->provinces())->firstWhere('code', $provinceCode);
         $regency = collect($this->regencies($provinceCode))->firstWhere('code', $regencyCode);
         $district = collect($this->districts($provinceCode, $regencyCode))->firstWhere('code', $districtCode);

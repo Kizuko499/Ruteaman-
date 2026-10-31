@@ -77,16 +77,23 @@ class AuthController extends Controller
         $kind=$request->validate(['institution_type'=>['sometimes',Rule::in(['school','campus'])]])['institution_type']??'school';
         $campus=$kind==='campus';
         $schoolRule=$campus?'exclude':'required';
+        // Pencarian nasional hanya memberi NPSN: kode wilayah diturunkan server
+        // dari direktori (importNationwide), jadi tidak wajib diisi form.
+        // Tanpa NPSN, kode wilayah tetap wajib seperti sebelumnya.
+        $hasNpsn=is_string($request->input('school_npsn'))&&preg_match('/^[A-Za-z0-9]{8}$/',trim($request->input('school_npsn')));
+        $regionRule=$campus?'exclude':($hasNpsn?'nullable':'required');
         $data=$request->validate(['display_name'=>['required','string','min:2','max:30'],
             'campus_id'=>[$campus?'required':'exclude','integer',Rule::exists('schools','id')->where(fn($q)=>$q->where('institution_type','campus')->where('status','active'))],
-            'province_code'=>[$schoolRule,'regex:/^\d{2}$/'],'regency_code'=>[$schoolRule,'regex:/^\d{2}\.\d{2}$/'],'district_code'=>[$schoolRule,'regex:/^\d{2}\.\d{2}\.\d{2}$/'],
+            'province_code'=>[$regionRule,'regex:/^\d{2}$/'],'regency_code'=>[$regionRule,'regex:/^\d{2}\.\d{2}$/'],'district_code'=>[$regionRule,'regex:/^\d{2}\.\d{2}\.\d{2}$/'],
             'school_npsn'=>[$schoolRule,'regex:/^[A-Za-z0-9]{8}$/'],'school_name'=>['nullable','string','max:255'],
             'email'=>['required','email','max:255','unique:users,email'],'password'=>['required','confirmed',PasswordRule::min(8)],'parental_consent'=>['accepted'],
             'faculty'=>[$campus?'nullable':'exclude','string','max:150']],
             ['campus_id.required'=>'Pilih kampus yang terdaftar.','campus_id.exists'=>'Kampus tidak tersedia untuk pendaftaran.','school_npsn.required'=>'Pilihan sekolah belum tersimpan. Pilih sekolah dari hasil pencarian atau masukkan NPSN yang lengkap.','province_code.required'=>'Pilih provinsi sekolah.','regency_code.required'=>'Pilih kabupaten/kota sekolah.','district_code.required'=>'Pilih kecamatan sekolah.','password.confirmed'=>'Ulangi kata sandi harus sama dengan kata sandi.']);
         if($campus){$school=School::where('institution_type','campus')->where('status','active')->findOrFail($data['campus_id']);}
         else{
-            try{$school=$directory->import(strtoupper($data['school_npsn']),$data['province_code'],$data['regency_code'],$data['district_code']);}
+            try{$school=(!empty($data['province_code'])&&!empty($data['regency_code'])&&!empty($data['district_code']))
+                ?$directory->import(strtoupper($data['school_npsn']),$data['province_code'],$data['regency_code'],$data['district_code'])
+                :$directory->importNationwide(strtoupper($data['school_npsn']));}
             catch(Throwable $error){report($error);throw ValidationException::withMessages(['school_npsn'=>'Sekolah tidak dapat diverifikasi dari direktori nasional. Pilih kembali sekolah atau coba beberapa saat lagi.']);}
             if($school->status==='archived')throw ValidationException::withMessages(['school_npsn'=>'Sekolah ini sudah diarsipkan dan tidak menerima pendaftaran baru.']);
         }

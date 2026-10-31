@@ -1,21 +1,21 @@
 {
-  "_shared-DpEWT7Lc.js": {
-    "file": "assets/shared-DpEWT7Lc.js",
+  "_shared-CZ6N9EXy.js": {
+    "file": "assets/shared-CZ6N9EXy.js",
     "name": "shared",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_sidebar-DBiKQQuu.css": {
-    "file": "assets/sidebar-DBiKQQuu.css",
-    "src": "_sidebar-DBiKQQuu.css"
-  },
-  "_sidebar-DeiTu8AK.js": {
-    "file": "assets/sidebar-DeiTu8AK.js",
+  "_sidebar-BVkVo6cN.js": {
+    "file": "assets/sidebar-BVkVo6cN.js",
     "name": "sidebar",
     "css": [
-      "assets/sidebar-DBiKQQuu.css"
+      "assets/sidebar-BobaiXey.css"
     ]
+  },
+  "_sidebar-BobaiXey.css": {
+    "file": "assets/sidebar-BobaiXey.css",
+    "src": "_sidebar-BobaiXey.css"
   },
   "node_modules/leaflet/dist/images/layers-2x.png": {
     "file": "assets/layers-2x-Bpkbi35X.png",
@@ -34,7 +34,7 @@
     "src": "node_modules/leaflet/dist/images/marker-shadow.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-D-CNwUSV.css",
+    "file": "assets/app-_Brn4wRN.css",
     "name": "app",
     "names": [
       "app.css"
@@ -43,7 +43,7 @@
     "isEntry": true
   },
   "resources/css/school-dashboard.css": {
-    "file": "assets/school-dashboard-WHUBzTeq.css",
+    "file": "assets/school-dashboard-ic_39T7F.css",
     "name": "school-dashboard",
     "names": [
       "school-dashboard.css"
@@ -52,12 +52,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DQ0YKKDg.js",
+    "file": "assets/app-D38WkVCj.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_sidebar-DeiTu8AK.js"
+      "_sidebar-BVkVo6cN.js"
     ],
     "dynamicImports": [
       "resources/js/features/home/featured-rotator.js",
@@ -75,40 +75,40 @@
     ]
   },
   "resources/js/features/conditions/detail.js": {
-    "file": "assets/detail-gc14h1gq.js",
+    "file": "assets/detail-zxjqbwIM.js",
     "name": "detail",
     "src": "resources/js/features/conditions/detail.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_shared-DpEWT7Lc.js"
+      "_shared-CZ6N9EXy.js"
     ]
   },
   "resources/js/features/conditions/list.js": {
-    "file": "assets/list-DiG0PoMw.js",
+    "file": "assets/list-qrpnj3FI.js",
     "name": "list",
     "src": "resources/js/features/conditions/list.js",
     "isDynamicEntry": true,
     "imports": [
-      "_shared-DpEWT7Lc.js"
+      "_shared-CZ6N9EXy.js"
     ]
   },
   "resources/js/features/home/featured-rotator.js": {
-    "file": "assets/featured-rotator-sdKZP1zz.js",
+    "file": "assets/featured-rotator-BFhfuL5N.js",
     "name": "featured-rotator",
     "src": "resources/js/features/home/featured-rotator.js",
     "isDynamicEntry": true,
     "imports": [
-      "_shared-DpEWT7Lc.js"
+      "_shared-CZ6N9EXy.js"
     ]
   },
   "resources/js/school-dashboard.js": {
-    "file": "assets/school-dashboard-BGRzMPeq.js",
+    "file": "assets/school-dashboard-COnsefbI.js",
     "name": "school-dashboard",
     "src": "resources/js/school-dashboard.js",
     "isEntry": true,
     "imports": [
-      "_sidebar-DeiTu8AK.js"
+      "_sidebar-BVkVo6cN.js"
     ]
   }
 }
